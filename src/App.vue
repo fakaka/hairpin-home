@@ -29,12 +29,14 @@ export default {
             activeIndex: '',
             menuData: [
                 {
+                    index: 'info',
+                    name: '定制页'
+                },
+                {
                     index: '/',
                     name: '主页'
-                }, {
-                    index: 'search',
-                    name: '页面导航'
-                }, {
+                },
+                {
                     index: 'bilibili',
                     name: '哔哩哔哩'
                 }, {
@@ -63,10 +65,10 @@ export default {
 </script>
 
 <style lang="less">
-    @import "./style/common";
+    @import './style/common';
     .el-main {
-      width: 80%;
-      margin: 0 auto;
-      padding-top: 10px;
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 10px;
     }
 </style>

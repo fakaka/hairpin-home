@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="devMode">
         <div class="fm">{{ someData }}</div>
         <el-button @click="sendName">send</el-button>
     </div>
@@ -16,6 +16,7 @@ export default {
     props: {},
     data() {
         return {
+            devMode: false,
             someData: '55'
         }
     },

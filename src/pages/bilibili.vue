@@ -1,7 +1,9 @@
 <template>
     <div class="bilibili">
         <div class="banner" style="margin-left: -50%;">
-            <img src="http://i0.hdslb.com/bfs/archive/450d278df2828057095f071cd63e95bed50e5892.png@.webp" alt="">
+            <a href="https://www.bilibili.com/">
+                <img src="http://i0.hdslb.com/bfs/archive/450d278df2828057095f071cd63e95bed50e5892.png@.webp" alt="">
+            </a>
         </div>
         <div class="recommend">
             <bilibili-recommend></bilibili-recommend>

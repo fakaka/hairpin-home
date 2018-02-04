@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from '@/pages/home'
-import Search from '@/pages/search'
+import Info from '@/pages/info'
 import Bilibili from '@/pages/bilibili'
 import Music from '@/pages/music'
 import News from '@/pages/news'
@@ -25,9 +25,9 @@ export default new Router({
             component: Music
         },
         {
-            path: '/search',
-            name: 'search',
-            component: Search
+            path: '/info',
+            name: 'info',
+            component: Info
         },
         {
             path: '/bilibili',
