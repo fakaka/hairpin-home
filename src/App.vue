@@ -56,19 +56,31 @@ export default {
         }
     },
     method: {
-
     },
     mounted() {
         this.activeIndex = this.$route.name || '/'
+
+        Notification.requestPermission().then(function (result) {
+                if (result === 'denied') {
+                    console.log('Permission wasn\'t granted. Allow a retry.')
+                    return
+                }
+                if (result === 'default') {
+                    console.log('The permission request was dismissed.')
+                    return
+                }
+                // Do something with the granted permission.
+                var notification = new Notification("Hi there!");
+            })
     }
 }
 </script>
 
 <style lang="less">
-    @import './style/common';
+    @import "./style/common";
     .el-main {
-        width: 80%;
-        margin: 0 auto;
-        padding-top: 10px;
+      width: 80%;
+      margin: 0 auto;
+      padding-top: 10px;
     }
 </style>

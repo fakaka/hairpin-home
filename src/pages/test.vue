@@ -2,6 +2,8 @@
     <div v-if="devMode">
         <div class="fm">{{ someData }}</div>
         <el-button @click="sendName">send</el-button>
+        <el-button @click="notify">notify</el-button>
+        <el-button @click="notify2">notify2</el-button>
     </div>
 </template>
 
@@ -16,7 +18,7 @@ export default {
     props: {},
     data() {
         return {
-            devMode: false,
+            devMode: true,
             someData: '55'
         }
     },
@@ -45,6 +47,14 @@ export default {
             stompClient.send("/welcome", {}, JSON.stringify({
                 'name': 666
             }));
+        },
+        notify() {
+            new Notification('这是一个通知', { body: '内容' })
+        },
+        notify2() {
+            new Notification('图片通知', {
+                body: 'GitHub', image: 'https://avatars1.githubusercontent.com/u/12379312?s=460&v=4'
+            })
         }
     },
     mounted() {
