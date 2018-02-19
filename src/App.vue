@@ -56,22 +56,30 @@ export default {
         }
     },
     method: {
+        _requestNotify() {
+            if (!("Notification" in window)) {
+                console.log("This browser does not support desktop notification")
+            } else if (Notification.permission == "default") {
+                Notification.requestPermission().then((result) => {
+                    if (result === 'denied') {
+                        console.log('Permission wasn\'t granted. Allow a retry.')
+                        return
+                    }
+                    if (result === 'default') {
+                        console.log('The permission request was dismissed.')
+                        return
+                    }
+                    // Do something with the granted permission.
+                    var notification = new Notification("Welcome")
+                })
+            }
+        }
     },
     mounted() {
         this.activeIndex = this.$route.name || '/'
-
-        Notification.requestPermission().then(function (result) {
-                if (result === 'denied') {
-                    console.log('Permission wasn\'t granted. Allow a retry.')
-                    return
-                }
-                if (result === 'default') {
-                    console.log('The permission request was dismissed.')
-                    return
-                }
-                // Do something with the granted permission.
-                var notification = new Notification("Hi there!");
-            })
+        setTimeout(() => {
+            this._requestNotify()
+        }, 0)
     }
 }
 </script>

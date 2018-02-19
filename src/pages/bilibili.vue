@@ -5,10 +5,14 @@
                 <img src="http://i0.hdslb.com/bfs/archive/450d278df2828057095f071cd63e95bed50e5892.png@.webp" alt="">
             </a>
         </div>
-        <div class="recommend">
-            <bilibili-recommend></bilibili-recommend>
+        <div class="left">
+            <div class="recommend">
+                <bilibili-recommend></bilibili-recommend>
+            </div>
+            <bilibili-like></bilibili-like>
         </div>
         <div class="rank">
+            <h3>排行</h3>
             <el-tabs tab-position="left" style="height: 700px;">
                 <el-tab-pane label="动画">
                     <bilibili-rank :rankData="rankData"></bilibili-rank>
@@ -17,9 +21,8 @@
                     <bilibili-rank :rankData="rankData"></bilibili-rank>
                 </el-tab-pane>
             </el-tabs>
-
         </div>
-        <bilibili-like></bilibili-like>
+
     </div>
 </template>
 
@@ -220,7 +223,6 @@ export default {
 
 <style scoped>
     .rank {
-      float: right;
       padding-top: 8px;
       padding-right: 8px;
     }
@@ -228,4 +230,10 @@ export default {
       padding-top: 5px;
       padding-left: 8px;
     }
+    /* .left {
+              float: left;
+            }
+            .right {
+              float: right;
+            } */
 </style>

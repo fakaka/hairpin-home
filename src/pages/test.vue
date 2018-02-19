@@ -18,7 +18,7 @@ export default {
     props: {},
     data() {
         return {
-            devMode: true,
+            devMode: false,
             someData: '55'
         }
     },

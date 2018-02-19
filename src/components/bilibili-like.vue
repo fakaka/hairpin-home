@@ -1,5 +1,6 @@
 <template>
     <div style="like">
+        <h3>关注</h3>
         <div class="card">
             <div class="main-content">
                 <a href="//bangumi.bilibili.com/anime/timeline" target="_blank" class="dp-i-block type-label c-pointer">番剧</a>

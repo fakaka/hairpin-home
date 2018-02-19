@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="search">
-            <el-input placeholder="请输入关键字" @keyup.enter.native="search" v-model.trim="q" class="input-with-select" :clearable="true" :autofocus="true">
+            <el-input placeholder="请输入关键字" @keyup.enter.native="search" v-model.trim="q" class="input-with-select" :clearable="true" :autofocus="true" tabindex="1">
                 <el-select v-model="selectEngine" slot="prepend" style="width: 80px;">
                     <el-option value="1" label="百度"></el-option>
                     <el-option value="2" label="360"></el-option>
