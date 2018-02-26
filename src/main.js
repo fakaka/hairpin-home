@@ -4,7 +4,6 @@ import router from './router'
 // import store from './store'
 import VueResource from 'vue-resource'
 
-// 
 // import VueWebsocket from "vue-websocket";
 
 import ElementUI from 'element-ui'
