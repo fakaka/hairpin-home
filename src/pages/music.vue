@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="block">
-            <el-carousel trigger="click" height="350px" :interval="4000" :autoplay="false">
+            <el-carousel trigger="click" height="350px" :interval="3000">
                 <el-carousel-item v-for="item in items" :key="item">
                     <img :src="item" alt="item" title="img">
                 </el-carousel-item>

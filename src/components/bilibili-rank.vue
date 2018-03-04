@@ -1,11 +1,11 @@
 <template>
     <div class="sec-rank zone-rank">
         <header class="rank-head">
-            <h3>{{ rankData.data[0].typename }}</h3>
+            <h3>{{ label }}</h3>
         </header>
         <div class="rank-list-wrap">
             <ul class="rank-list hot-list">
-                <li v-for="(item, index) in rankData.data" :key="item.aid" class="rank-item show-detail" :class="isHighlight(index)">
+                <li v-for="(item, index) in rankData" :key="item.aid" class="rank-item show-detail" :class="isHighlight(index)" v-if="index < 10">
                     <i class="ri-num">{{ index + 1 }}</i>
                     <a :href="perfix + item.aid" target="_blank" :title="item.title" class="ri-info-wrap clearfix">
                         <div class="lazy-img ri-preview">
@@ -30,7 +30,10 @@ export default {
     name: 'bilibili-rank',
     props: {
         rankData: {
-            type: Object
+            type: Array
+        },
+        label: {
+            type: String
         }
     },
     data() {
@@ -44,7 +47,7 @@ export default {
         }
     },
     created() {
-        
+
     },
     computed: {},
     filters: {

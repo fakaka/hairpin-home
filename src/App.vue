@@ -55,7 +55,7 @@ export default {
             ]
         }
     },
-    method: {
+    methods: {
         _requestNotify() {
             if (!("Notification" in window)) {
                 console.log("This browser does not support desktop notification")
@@ -77,9 +77,7 @@ export default {
     },
     mounted() {
         this.activeIndex = this.$route.name || '/'
-        setTimeout(() => {
-            this._requestNotify()
-        }, 0)
+        this._requestNotify()
     }
 }
 </script>

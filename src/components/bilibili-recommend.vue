@@ -4,8 +4,8 @@
         <div class="recommend-module">
             <!---->
             <div v-for="(o, index) in 8 " :key="index + 12" class="groom-module home-card">
-                <a href="https://www.bilibili.com/video/av18466648" target="_blank" title="【紫罗兰永恒花园】官方你再不播片头，我就自己做一个">
-                    <img src="//i2.hdslb.com/bfs/archive/d41f82384aab788d8a375c88fce0ab474163e7b6.jpg@160w_100h.jpg" alt="【紫罗兰永恒花园】官方你再不播片头，我就自己做一个" width="160" height="100">
+                <a href="https://www.bilibili.com/video/av20116380" target="_blank" title="【紫罗兰永恒花园】官方你再不播片头，我就自己做一个">
+                    <img src="//i2.hdslb.com/bfs/archive/7cf854252553d22b1a7cf68777b2dbf46bc3170a.jpg" alt="【紫罗兰永恒花园】官方你再不播片头，我就自己做一个" width="160" height="100">
                     <div class="card-mark">
                         <p class="title">【紫罗兰永恒花园】官方你再不播片头，我就自己做一个</p>
                         <p class="author">up主：狂气小米瓜</p>

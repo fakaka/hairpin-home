@@ -91,7 +91,7 @@ export default {
                     window.open('https://www.google.co.id/search?q=' + word)
                     break;
                 default:
-                    this.$message.error('错了哦，这是一条错误消息')
+                    this.$message.error('不支持的搜索引擎!!!')
                     break;
             }
         },
