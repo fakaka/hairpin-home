@@ -6,8 +6,8 @@
             </a>
         </div>
         <div class="left">
-            <div class="recommend">
-                <bilibili-recommend></bilibili-recommend>
+            <div class="recommend" v-if="recommendData.length">
+                <bilibili-recommend :recommendData="recommendData"></bilibili-recommend>
             </div>
             <h3>关注</h3>
             <bilibili-like></bilibili-like>
@@ -53,6 +53,7 @@ export default {
     data() {
         return {
             rankDatas: [],
+            recommendData: [],
             rankMap: rankMap,
             rankArr: [1, 3, 4, 23, 129]
         }
@@ -65,6 +66,14 @@ export default {
                     this.rankDatas.push(resp.body.data)
                 }
             })
+        },
+        _getRecommendData() {
+            this.$http.get(baseUrl + '/recommend').then(resp => {
+                console.log(resp.body)
+                if (resp.body.code == 0) {
+                    this.recommendData = resp.body.data
+                }
+            })
         }
     },
     computed: {
@@ -74,6 +83,7 @@ export default {
             const rid = this.rankArr[i]
             this._getRankData(rid)
         }
+        this._getRecommendData()
     },
     components: {
         BilibiliRank, BilibiliRecommend, BilibiliLike
@@ -90,10 +100,5 @@ export default {
       padding-top: 5px;
       padding-left: 8px;
     }
-    /* .left {
-                                                                                              float: left;
-                                                                                            }
-                                                                                            .right {
-                                                                                              float: right;
-                                                                                            } */
+
 </style>

@@ -21,7 +21,7 @@
                     <el-card class="box-card">
                         <div slot="header" class="clearfix">
                             <span>CSDN</span>
-                            <el-button style="float: right; padding: 3px 0" type="text">预留</el-button>
+                            <el-button style="float: right; padding: 3px 0" type="text" @click="refresh">刷新</el-button>
                         </div>
                         <div v-for="(item, index) in csdnNews" :key="index" class="text item">
                             <a :href="item.url" target="_blank" :title="item.tag">
@@ -147,8 +147,9 @@ export default {
             })
         },
         _getCSDNData(pageSize = 10) {
+            console.log('asd')
             this.$http.get(baseUrl + '/csdn?pagesize=' + pageSize).then(resp => {
-                // console.log(resp.body)
+                console.log(resp.body)
                 if (resp.body.status == 'true') {
                     this.csdnNews = resp.body.articles
                 }
@@ -164,12 +165,16 @@ export default {
         },
         _getSpring4allNewsData(page = 1) {
             this.$http.get(baseUrl + '/spring4all?page=' + page).then(resp => {
-                console.log(resp.body)
+                // console.log(resp.body)
                 if (resp.body.code == 0) {
                     this.spring4allNews = resp.body.data.list
                 }
             })
         },
+        refresh() {
+            console.log('aaa')
+            this._getCSDNData()
+        }
     },
     computed: {
     },
