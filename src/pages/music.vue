@@ -44,22 +44,8 @@ export default {
                     name: '说散就散',
                     duration: '04:02',
                     singer: '袁娅维'
-                }, {
-                    date: 'BINGBIAN病变',
-                    name: 'BINGBIAN病变',
-                    duration: '04:01',
-                    singer: 'Cubi / BRGang / Aydo$'
-                }, {
-                    date: '广东十年爱情故事',
-                    name: '广东十年爱情故事',
-                    duration: '03:34',
-                    singer: '广东雨神'
-                }, {
-                    date: '空空如也',
-                    name: '空空如也',
-                    duration: '03:33',
-                    singer: '任然'
-                }],
+                }
+            ],
             tableData2: [
                 {
                     date: '--',
@@ -97,18 +83,49 @@ export default {
         }
     },
     methods: {
-        _getApi() {
-            // this.$http.get('http://localhost:8088/api').then(response => {
-            //     console.log(response.body)
-            //     this.someData = response.body.name
-            // })
+        _getTops() {
+            this.$http.get('http://localhost:3003/music/top?idx=1').then(resp => {
+                // console.log(resp.body)
+                if (resp.body.code == 200) {
+                    var array = resp.body.playlist.tracks
+                    if (array.length < 10) {
+                        return
+                    }
+                    this.tableData = []
+                    for (let i = 0; i < 10; i++) {
+                        const element = array[i]
+                        var newData = this.formatData(element)
+                        this.tableData.push(newData)
+                    }
+                }
+            })
         },
         clickRow(a, b, c) {
             console.log(a, b, c)
+        },
+        formatData(data) {
+            let res = {}
+            res.name = data.name
+            let singer = ''
+            for (let i = 0; i < data.ar.length; i++) {
+                singer += '/' + data.ar[i].name
+            }
+            res.singer = singer.substring(1)
+
+            let dt = parseInt(data.dt / 1000)
+            let min = parseInt(dt / 60)
+            let sec = dt % 60
+            if (sec < 10) {
+                sec = '0' + sec
+            }
+            res.duration = min + ':' + sec
+            res.album = data.al.name
+
+            return res
         }
     },
     mounted() {
-        this._getApi()
+        this._getTops()
     },
     computed: {},
     components: {

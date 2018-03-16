@@ -37,36 +37,7 @@ export default {
         return {
             q: '',
             selectEngine: '百度',
-            tools: [
-                {
-                    title: '在线工具 —— 开源中国社区',
-                    url: 'http://tool.oschina.net/'
-                },
-                {
-                    title: 'Can I use',
-                    url: 'http://caniuse.com/'
-                },
-                {
-                    title: 'RGB颜色查询对照表',
-                    url: 'http://www.114la.com/other/rgb.htm'
-                },
-                {
-                    title: '在线Cron表达式生成器',
-                    url: 'http://cron.qqe2.com/'
-                },
-                {
-                    title: '开源在线 Markdown 编辑器',
-                    url: 'https://pandao.github.io/editor.md/'
-                },
-                {
-                    title: 'Cropper.js',
-                    url: 'https://fengyuanchen.github.io/cropper/'
-                },
-                {
-                    title: 'vue-image-crop-upload',
-                    url: 'https://github.com/dai-siki/vue-image-crop-upload'
-                },
-            ]
+            tools: []
         }
     },
     methods: {
@@ -95,8 +66,19 @@ export default {
                     break;
             }
         },
+        _getTools(){
+            this.$http.get('http://localhost:8088/nav/like/list').then(resp => {
+                // console.log(resp.body)
+                if (resp.body.code == 0) {
+                    this.tools = resp.body.data
+                    
+                }
+            })
+        }
     },
-    created() { },
+    mounted() { 
+        this._getTools()
+    },
     computed: {},
     components: {
         NavGrid

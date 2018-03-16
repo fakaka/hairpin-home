@@ -21,7 +21,7 @@ export default {
   name: "bilibili-recommend",
   props: {
       recommendData:{
-          type:Array
+          type: Array
       }
   },
   data() {
