@@ -55,7 +55,7 @@
                             <span>spring4all</span>
                             <el-button style="float: right; padding: 3px 0" type="text">预留</el-button>
                         </div>
-                        <div v-for="(item, index) in spring4allNews" :key="index" class="text item">
+                        <div v-for="(item, index) in spring4allNews" :key="index" v-if="index < 10" class="text item">
                             <a :href="'http://www.spring4all.com/article/' + item.id" target="_blank" :title="item.description">
                                 {{ item.title }}
                             </a>
@@ -147,9 +147,8 @@ export default {
             })
         },
         _getCSDNData(pageSize = 10) {
-            console.log('asd')
             this.$http.get(baseUrl + '/csdn?pagesize=' + pageSize).then(resp => {
-                console.log(resp.body)
+                // console.log(resp.body)
                 if (resp.body.status == 'true') {
                     this.csdnNews = resp.body.articles
                 }
@@ -172,7 +171,6 @@ export default {
             })
         },
         refresh() {
-            console.log('aaa')
             this._getCSDNData()
         }
     },

@@ -59,17 +59,17 @@ export default {
         }
     },
     methods: {
-        _getRankData(rid) {
+        _getRankData(i, rid) {
             this.$http.get(baseUrl + '/rank?rid=' + rid).then(resp => {
                 if (resp.body.code == 0) {
                     // console.log(resp.body.data)
-                    this.rankDatas.push(resp.body.data)
+                    this.rankDatas[i] = (resp.body.data)
                 }
             })
         },
         _getRecommendData() {
             this.$http.get(baseUrl + '/recommend').then(resp => {
-                console.log(resp.body)
+                // console.log(resp.body)
                 if (resp.body.code == 0) {
                     this.recommendData = resp.body.data
                 }
@@ -79,9 +79,10 @@ export default {
     computed: {
     },
     mounted() {
+        this.rankDatas = []
         for (let i = 0; i < this.rankArr.length; i++) {
             const rid = this.rankArr[i]
-            this._getRankData(rid)
+            this._getRankData(i, rid)
         }
         this._getRecommendData()
     },
@@ -100,5 +101,4 @@ export default {
       padding-top: 5px;
       padding-left: 8px;
     }
-
 </style>

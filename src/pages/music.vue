@@ -7,15 +7,31 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <el-tabs tab-position="left" type="border-card" style="height: 800px;">
+        <el-tabs tab-position="left" type="border-card">
             <el-tab-pane label="云音乐热歌榜">
-                <music-list :tableData="tableData" @click-row="clickRow"></music-list>
+                <div style="overflow-y:scroll">
+                    <music-list :tableData="tableData" @click-row="clickRow"></music-list>
+                </div>
             </el-tab-pane>
             <el-tab-pane label="我喜欢">
                 <music-list :tableData="tableData2"></music-list>
             </el-tab-pane>
-            <el-tab-pane label="每日推荐">{{ today }} 每日推荐
-                <music-list :tableData="tableData3"></music-list>
+            <el-tab-pane label="歌手排行榜">
+                <div>
+                    <ul v-if="tableData3">
+                        <li v-for="(item, index) in tableData3" :key="index">
+                            <div class="u-cover u-cover-5">
+                                <a title="周杰伦的音乐" :href="'http://music.163.com/#/artist?id=' + item.id" target="_blank">
+                                    <img :src="item.picUrl + '?param=130y130'">
+                                </a>
+                            </div>
+                            <p>
+                                <a :href="'http://music.163.com/#/artist?id=' + item.id" target="_blank" :title="item.name">{{ item.name }}</a>
+                            </p>
+                        </li>
+                    </ul>
+
+                </div>
             </el-tab-pane>
             <el-tab-pane label="轻音乐">轻音乐
                 <music-list :tableData="tableData4"></music-list>
@@ -52,25 +68,9 @@ export default {
                     name: '讲真的',
                     duration: '03:58',
                     singer: '曾惜'
-                }, {
-                    date: '--',
-                    name: '干物女',
-                    duration: '04:01',
-                    singer: '萧忆情'
-                }, {
-                    date: '广东十年爱情故事',
-                    name: '追光者',
-                    duration: '03:34',
-                    singer: '岑宁儿'
-                }],
-            tableData3: [
-                {
-                    date: '--',
-                    name: '天真',
-                    duration: '03:58',
-                    singer: '李艺彤'
                 }
             ],
+            tableData3: [],
             tableData4: [
                 {
                     date: '--',
@@ -88,14 +88,56 @@ export default {
                 // console.log(resp.body)
                 if (resp.body.code == 200) {
                     var array = resp.body.playlist.tracks
-                    if (array.length < 10) {
+                    if (array.length < 15) {
                         return
                     }
                     this.tableData = []
-                    for (let i = 0; i < 10; i++) {
+                    for (let i = 0; i < 15; i++) {
                         const element = array[i]
                         var newData = this.formatData(element)
                         this.tableData.push(newData)
+                    }
+                }
+            })
+        },
+        _getTopArtist() {
+            this.$http.get('http://localhost:3003/music/top/artist').then(resp => {
+                // console.log(resp.body)
+                if (resp.body.code == 200) {
+                    this.tableData3 = resp.body.artists
+                }
+            })
+        },
+        _getLikes() {
+            this.$http.get('http://localhost:3003/music/playlist/detail?id=52177186').then(resp => {
+                // console.log(resp.body)
+                if (resp.body.code == 200) {
+                    var array = resp.body.result.tracks
+                    if (array.length < 15) {
+                        return
+                    }
+                    this.tableData2 = []
+                    for (let i = 0; i < 15; i++) {
+                        const element = array[i]
+                        var newData = this.formatData2(element)
+                        this.tableData2.push(newData)
+                    }
+                }
+            })
+        },
+        _getPlaylist(id = 112875926) {
+            this.$http.get('http://localhost:3003/music/playlist/detail?id=' + id).then(resp => {
+                // console.log(resp.body)
+                if (resp.body.code == 200) {
+                    var array = resp.body.result.tracks
+                    if (array.length < 15) {
+                        return
+                    }
+                    this.tableData4 = []
+                    for (let i = 0; i < 15; i++) {
+                        const element = array[i]
+                        var newData = this.formatData2(element)
+                        this.tableData4.push(newData)
                     }
                 }
             })
@@ -122,10 +164,33 @@ export default {
             res.album = data.al.name
 
             return res
+        },
+        formatData2(data) {
+            let res = {}
+            res.name = data.name
+            let singer = ''
+            for (let i = 0; i < data.artists.length; i++) {
+                singer += '/' + data.artists[i].name
+            }
+            res.singer = singer.substring(1)
+
+            let dt = parseInt(data.duration / 1000)
+            let min = parseInt(dt / 60)
+            let sec = dt % 60
+            if (sec < 10) {
+                sec = '0' + sec
+            }
+            res.duration = min + ':' + sec
+            res.album = data.album.name
+
+            return res
         }
     },
     mounted() {
         this._getTops()
+        this._getTopArtist()
+        this._getLikes()
+        this._getPlaylist()
     },
     computed: {},
     components: {
@@ -145,5 +210,18 @@ export default {
       line-height: 350px;
       width: 70%;
       margin: 0 15%;
+    }
+
+    .el-tab-pane {
+      overflow-y: scroll;
+    }
+    li {
+      display: inline-block;
+      width: 140px;
+      height: 188px;
+      overflow: hidden;
+      padding: 0 0 10px 35px;
+      line-height: 1.4;
+      font-size: 12px;
     }
 </style>

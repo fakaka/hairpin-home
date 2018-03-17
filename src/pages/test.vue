@@ -49,7 +49,11 @@ export default {
             }));
         },
         notify() {
-            new Notification('这是一个通知', { body: '内容' })
+            var notification = new Notification('这是一个通知', { body: '内容' })
+            notification.onclick = function (event) {
+                event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                window.open('http://www.mozilla.org', '_blank');
+            }
         },
         notify2() {
             new Notification('图片通知', {

@@ -116,7 +116,6 @@ export default {
       border: 1px solid rgba(40, 158, 255, 0.5);
       margin-top: 10px;
       border-radius: 8px;
-      box-shadow: 0 0 1px #00b5e5;
     }
     .card .main-content {
       width: 534px;
