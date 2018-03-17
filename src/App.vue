@@ -49,6 +49,9 @@ export default {
                     index: 'todo',
                     name: '待办'
                 }, {
+                    index: 'blog',
+                    name: '博客'
+                }, {
                     index: 'test',
                     name: '测试'
                 }

@@ -7,6 +7,7 @@ import Bilibili from '@/pages/bilibili'
 import Music from '@/pages/music'
 import News from '@/pages/news'
 import Todo from '@/pages/todo'
+import Blog from '@/pages/blog'
 import Test from '@/pages/test'
 
 Vue.use(Router)
@@ -43,6 +44,11 @@ export default new Router({
             path: '/todo',
             name: 'todo',
             component: Todo
+        },
+        {
+            path: '/blog',
+            name: 'blog',
+            component: Blog
         },
         {
             path: '/test',
