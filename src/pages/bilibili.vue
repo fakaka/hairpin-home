@@ -4,6 +4,7 @@
             <bilibili-header :bannerImg="bannerImg"></bilibili-header>
         </div>
         <div class="left">
+            <h3>推荐</h3>
             <div class="recommend" v-if="recommendData.length">
                 <bilibili-recommend :recommendData="recommendData"></bilibili-recommend>
             </div>

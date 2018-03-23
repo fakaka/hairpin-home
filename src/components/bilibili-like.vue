@@ -1,5 +1,5 @@
 <template>
-    <div style="like">
+    <div>
         <div class="card">
             <div class="main-content">
                 <a href="//bangumi.bilibili.com/anime/timeline" target="_blank" class="dp-i-block type-label c-pointer">番剧</a>
@@ -7,8 +7,9 @@
                     <span class="c-pointer">魔卡少女樱 CLEAR CARD篇</span>
                 </p>
                 <p class="time">
-                    <span>5小时前</span>
-                    <span> 更新了</span>
+                    <a href="//t.bilibili.com/75660483191803960?tab=1" target="_blank" class="detail-link">
+                        <span>17小时前</span>
+                    </a>
                 </p>
                 <div class="card-content">
                     <div class="video-container">
@@ -44,45 +45,109 @@
                 </p>
                 <p class="time">
                     <a href="//t.bilibili.com/75660483191803960?tab=1" target="_blank" class="detail-link">17小时前</a>
+                </p>
+                <div class="card-content">
+                    <div class="video-container">
+                        <a target="_blank" href="//www.bilibili.com/video/av18531892">
+                            <div class="image-area">
+                                <img src="//i1.hdslb.com/bfs/archive/9e25b4109247e030642ed24aad84a4799eb27d12.jpg@406w_254h_1e_1c.webp">
+                                <div class="mask">
+                                    <span>18:30</span>
+                                </div>
+                            </div>
+                            <div class="text-area">
+                                <div class="title">【木鱼微剧场】《入殓师》无差别的匠人精神</div>
+                                <div class="content">影片讲述的是一种无差别的面对事业无比认真的匠人精神。在一个对自己事业存着热爱之心，愿意倾注努力的人眼中，并没有低贱的事业。因为他知道自己的事业创造了价值，从而时刻对它存着一份敬畏之心。一份事业，值得被认真对待，而且它在得到这样的对待后，也会回报人。</div>
+                                <div class="view-danmaku">
+                                    <div>
+                                        <i class="icon-font icon-play-a"></i>
+                                        <span class="view">播放 15.9万</span>
+                                    </div>
+                                    <div>
+                                        <i class="icon-font icon-danmu-a"></i>
+                                        <span class="danmaku">弹幕 759</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="video-container">
+                        <a target="_blank" href="//www.bilibili.com/video/av18531892">
+                            <div class="image-area">
+                                <img src="//i1.hdslb.com/bfs/archive/9e25b4109247e030642ed24aad84a4799eb27d12.jpg@406w_254h_1e_1c.webp">
+                                <div class="mask">
+                                    <span>18:30</span>
+                                </div>
+                            </div>
+                            <div class="text-area">
+                                <div class="title">【木鱼微剧场】《入殓师》无差别的匠人精神</div>
+                                <div class="content">影片讲述的是一种无差别的面对事业无比认真的匠人精神。在一个对自己事业存着热爱之心，愿意倾注努力的人眼中，并没有低贱的事业。因为他知道自己的事业创造了价值，从而时刻对它存着一份敬畏之心。一份事业，值得被认真对待，而且它在得到这样的对待后，也会回报人。</div>
+                                <div class="view-danmaku">
+                                    <div>
+                                        <i class="icon-font icon-play-a"></i>
+                                        <span class="view">播放 15.9万</span>
+                                    </div>
+                                    <div>
+                                        <i class="icon-font icon-danmu-a"></i>
+                                        <span class="danmaku">弹幕 759</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="user-head c-pointer" style="background-image: url(&quot;https://i2.hdslb.com/bfs/face/696df59d35c78430f1a0bdb6184558e7b7eb4a6e.jpg&quot;); border-radius: 50%;">
+            </div>
+        </div>
+        <div class="card" style="margin-top: 8px; border-radius: 8px;">
+            <div class="main-content">
+                <p class="user-name fs-16 ls-0 d-i-block">
+                    <span class="c-pointer" data-userinfo-popup-inited="true">矮乐多Aliga</span>
+                </p>
+                <p class="time fs-12 ls-0 tc-slate">
+                    <a href="//t.bilibili.com/98258638301055119?tab=1" target="_blank" class="detail-link tc-slate">03-22</a>
                     <span></span>
                 </p>
                 <div class="card-content">
-                    <div>
-                        <div class="video">
-                            <div class="description">
+                    <div class="post-content">
+                        <div class="album">
+                            <div class="text p-rel description">
                                 <div class="content">
-                                    <div class="content-full hidden">【木鱼微剧场】《入殓师》无差别的匠人精神：影片讲述的是一种无差别的面对事业无比认真的匠人精神。在一个对自己事业存着热爱之心，愿意倾注努力的人眼中，并没有低贱的事业。因为他知道自己的事业创造了价值，从而时刻对它存着一份敬畏之心。一份事业，值得被认真对待，而且它在得到这样的对待后，也会回报人。</div>
+                                    <div class="content-full hidden">中二病</div>
                                 </div>
                             </div>
-                            <div class="video-container">
-                                <a target="_blank" href="//www.bilibili.com/video/av18531892">
-                                    <div class="image-area">
-                                        <img src="//i1.hdslb.com/bfs/archive/9e25b4109247e030642ed24aad84a4799eb27d12.jpg@406w_254h_1e_1c.webp">
-                                        <div class="mask">
-                                            <span>18:30</span>
-                                        </div>
-                                    </div>
-                                    <div class="text-area">
-                                        <div class="title">【木鱼微剧场】《入殓师》无差别的匠人精神</div>
-                                        <div class="content">影片讲述的是一种无差别的面对事业无比认真的匠人精神。在一个对自己事业存着热爱之心，愿意倾注努力的人眼中，并没有低贱的事业。因为他知道自己的事业创造了价值，从而时刻对它存着一份敬畏之心。一份事业，值得被认真对待，而且它在得到这样的对待后，也会回报人。</div>
-                                        <div class="view-danmaku">
-                                            <div>
-                                                <i class="icon-font icon-play-a"></i>
-                                                <span class="view">播放 15.9万</span>
-                                            </div>
-                                            <div>
-                                                <i class="icon-font icon-danmu-a"></i>
-                                                <span class="danmaku">弹幕 759</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                            <div class="imagesbox">
+                                <div class="zoom-wrap">
+                                    <ul class="zoom-list list-none zoom-6">
+                                        <li class="card card-6">
+                                            <img src="//i0.hdslb.com/bfs/album/3ed39afc3c04e08b366ecc5c2d4189f92ab21476.jpg@104w_104h_1e_1c.webp">
+                                        </li>
+                                        <li class="card card-6">
+                                            <img src="//i0.hdslb.com/bfs/album/60fbe41cc70b08695effafa61f01b45468b54b66.jpg@104w_104h_1e_1c.webp">
+                                        </li>
+                                        <li class="card card-6">
+                                            <img src="//i0.hdslb.com/bfs/album/94ccf537c3dccad16a3b9dad84c830de0018336b.jpg@104w_104h_1e_1c.webp">
+                                        </li>
+                                        <li class="card card-6">
+                                            <img src="//i0.hdslb.com/bfs/album/0d03abf3acdc2225e25747350238a3e0c9a8de3f.jpg@104w_104h_1e_1c.webp">
+                                        </li>
+                                        <li class="card card-6">
+                                            <img src="//i0.hdslb.com/bfs/album/cfcfffa71cad379a9a879422a87fdee1a1f2891f.jpg@104w_104h_1e_1c.webp">
+                                        </li>
+                                        <li class="card card-6">
+                                            <img src="//i0.hdslb.com/bfs/album/d71dabbf10e040cf870016af3ae510f3b2671c04.jpg@104w_104h_1e_1c.webp">
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="user-head c-pointer" style="background-image: url(&quot;https://i2.hdslb.com/bfs/face/696df59d35c78430f1a0bdb6184558e7b7eb4a6e.jpg&quot;); border-radius: 50%;">
+            <div class="user-head c-pointer" style="background-image: url(&quot;https://i1.hdslb.com/bfs/face/795bd8c4a25359617739c8574374c0750bd66b5c.jpg@48w_48h.webp&quot;); border-radius: 50%;" data-userinfo-popup-inited="true">
             </div>
         </div>
     </div>
@@ -108,7 +173,6 @@ export default {
 </script>
 
 <style scoped>
-
     .card {
       position: relative;
       width: 638px;
@@ -133,6 +197,7 @@ export default {
       font-size: 12px;
     }
     .card .main-content .time .detail-link {
+      color: #23ade5;
       -webkit-transition: color 0.3s ease;
       transition: color 0.3s ease;
     }
@@ -260,6 +325,36 @@ export default {
     .video-container .text-area .view-danmaku > div {
       width: 72px;
       display: inline-block;
+    }
+
+    .imagesbox {
+      width: 518px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      text-align: center;
+    }
+
+    .imagesbox .zoom-wrap .zoom-list {
+      line-height: 0;
+      text-align: left;
+      margin-top: -4px;
+      margin-left: -4px;
+      vertical-align: top;
+    }
+
+    .imagesbox .zoom-wrap .zoom-list .card {
+      width: 104px;
+      height: 104px;
+      margin: 4px 0 0 4px;
+      display: inline-block;
+      vertical-align: top;
+      overflow: hidden;
+      border-radius: 6px;
+      position: relative;
+      cursor: -webkit-zoom-in;
+      cursor: zoom-in;
     }
 
     .c-pointer {
