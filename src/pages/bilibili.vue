@@ -1,9 +1,7 @@
 <template>
     <div class="bilibili">
         <div class="banner" style="margin-left: -50%;">
-            <a href="https://www.bilibili.com/" target="_blank">
-                <img src="http://i0.hdslb.com/bfs/archive/450d278df2828057095f071cd63e95bed50e5892.png@.webp" alt="">
-            </a>
+            <bilibili-header :bannerImg="bannerImg"></bilibili-header>
         </div>
         <div class="left">
             <div class="recommend" v-if="recommendData.length">
@@ -25,6 +23,7 @@
 </template>
 
 <script>
+import BilibiliHeader from "@/components/bilibili-header"
 import BilibiliRecommend from "@/components/bilibili-recommend"
 import BilibiliRank from "@/components/bilibili-rank"
 import BilibiliLike from "@/components/bilibili-like"
@@ -52,6 +51,7 @@ export default {
     props: {},
     data() {
         return {
+            bannerImg: '',
             rankDatas: [],
             recommendData: [],
             rankMap: rankMap,
@@ -59,6 +59,14 @@ export default {
         }
     },
     methods: {
+        _getBanner() {
+            this.$http.get(baseUrl + '/banner').then(resp => {
+                if (resp.body.code == 0) {
+                    // console.log(resp.body.data)
+                    this.bannerImg = resp.body.data[0].pic
+                }
+            })
+        },
         _getRankData(i, rid) {
             this.$http.get(baseUrl + '/rank?rid=' + rid).then(resp => {
                 if (resp.body.code == 0) {
@@ -79,6 +87,7 @@ export default {
     computed: {
     },
     mounted() {
+        this._getBanner()
         this.rankDatas = []
         for (let i = 0; i < this.rankArr.length; i++) {
             const rid = this.rankArr[i]
@@ -87,7 +96,7 @@ export default {
         this._getRecommendData()
     },
     components: {
-        BilibiliRank, BilibiliRecommend, BilibiliLike
+        BilibiliHeader, BilibiliRank, BilibiliRecommend, BilibiliLike
     }
 }
 </script>
@@ -100,5 +109,9 @@ export default {
     .el-tab-pane {
       padding-top: 5px;
       padding-left: 8px;
+    }
+
+    .banner {
+      position: relative;
     }
 </style>

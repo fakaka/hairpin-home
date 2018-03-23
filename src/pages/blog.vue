@@ -9,7 +9,9 @@ import BlogArticle from "@/components/blog-article"
 
 export default {
     name: 'blog',
-    props: {},
+    props: {
+        
+    },
     data() {
         return {
         }
