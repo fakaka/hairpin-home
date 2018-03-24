@@ -68,6 +68,19 @@ export default {
 </script>
 
 <style scoped>
+
+    ul,
+    li {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-style: normal;
+      text-decoration: none;
+      border: none;
+      font-family: "Microsoft Yahei", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+    }
     .lazy-img {
       background: url(//s1.hdslb.com/bfs/static/phoenix/home/static/img/img_loading.a351656.png)
         50% no-repeat;

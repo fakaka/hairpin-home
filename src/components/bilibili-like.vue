@@ -2,32 +2,36 @@
     <div>
         <div class="card">
             <div class="main-content">
-                <a href="//bangumi.bilibili.com/anime/timeline" target="_blank" class="dp-i-block type-label c-pointer">番剧</a>
+                <a href="//bangumi.bilibili.com/anime/timeline" target="_blank" class="dp-i-block type-label c-pointer">{{ likeData.tname }}</a>
                 <p class="user-name yahei-16 dp-i-block">
-                    <span class="c-pointer">魔卡少女樱 CLEAR CARD篇</span>
+                    <!-- <span class="c-pointer">{{ likeData.user.name }}</span> -->
+                    <span class="c-pointer" v-if="isVideo">{{ likeData.owner.name }}</span>
                 </p>
                 <p class="time">
                     <a href="//t.bilibili.com/75660483191803960?tab=1" target="_blank" class="detail-link">
-                        <span>17小时前</span>
+                        <!-- <span>{{ likeData.item.upload_time_text }}</span> -->
+                        <span>{{ likeData.pubdate }}</span>
                     </a>
                 </p>
                 <div class="card-content">
                     <div class="video-container">
-                        <a target="_blank" href="https://bangumi.bilibili.com/anime/21421/play#172121">
+                        <!-- <a target="_blank" :href="likeData.item.video_playurl"> -->
+                        <a target="_blank" :href="'https://www.bilibili.com/video/av' + likeData.aid">
                             <div class="image-area">
-                                <img src="//i0.hdslb.com/bfs/archive/fa000121123db0d23eab3002cc7af1f4f610c436.jpg@406w_254h_1e_1c.webp">
+                                <img :src="likeData.item.cover.default" v-if="isVideo2">
+                                <img :src="likeData.pic" v-if="isVideo">
                             </div>
                             <div class="text-area">
-                                <div class="title">第3集 - 小樱的暴雨警报</div>
-                                <div class="content"></div>
+                                <div class="title">{{ likeData.title}}</div>
+                                <div class="content">{{ likeData.desc }}</div>
                                 <div class="view-danmaku">
                                     <div>
                                         <i class="icon-font icon-play-a"></i>
-                                        <span class="view">播放 25.6万</span>
+                                        <span class="view">播放 {{ likeData.stat.view }}</span>
                                     </div>
                                     <div>
                                         <i class="icon-font icon-danmu-a"></i>
-                                        <span class="danmaku">弹幕 1.7万</span>
+                                        <span class="danmaku">弹幕 {{ likeData.stat.danmaku }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="user-head c-pointer" style="background-image: url(&quot;https://i0.hdslb.com/bfs/bangumi/07245c4bf4acb03a5819762fea3210c656aba66c.jpg&quot;); border-radius: 12px;">
+            <div class="user-head c-pointer" :style="'background-image: url(&quot;' + likeData.owner.face + '&quot;); border-radius: 12px;'">
             </div>
         </div>
         <div class="card">
@@ -157,7 +161,17 @@
 
 export default {
     name: 'bilibili-like',
-    props: {},
+    props: {
+        likeData: {
+            type: Object
+        },
+        isImages: false,
+        isVideo: {
+            type: Boolean,
+            default: true
+        },
+        isVideo2: false,
+    },
     data() {
         return {
         }

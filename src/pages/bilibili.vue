@@ -1,6 +1,6 @@
 <template>
     <div class="bilibili">
-        <div class="banner" style="margin-left: -50%;">
+        <div class="banner" style="margin-left: -50%;height:180px;">
             <bilibili-header :bannerImg="bannerImg"></bilibili-header>
         </div>
         <div class="left">
@@ -9,11 +9,13 @@
                 <bilibili-recommend :recommendData="recommendData"></bilibili-recommend>
             </div>
             <h3>关注</h3>
-            <bilibili-like></bilibili-like>
+            <div class="like" v-if="likeData">
+                <bilibili-like :likeData="likeData"></bilibili-like>
+            </div>
         </div>
         <div class="rank">
             <h3>排行</h3>
-            <el-tabs tab-position="left" style="height: 730px;" v-if="rankDatas.length">
+            <el-tabs tab-position="left" style="height: 730px;" v-if="rankDatas.length == 5">
                 <el-tab-pane v-for="(rankData, index) in rankDatas" :key="index" :label="rankMap[rankArr[index]]">
                     <bilibili-rank :label="rankMap[rankArr[index]]" :rankData="rankData"></bilibili-rank>
                 </el-tab-pane>
@@ -44,7 +46,16 @@ const rankMap = {
     '168': '国产原创相关'
 }
 
+const likeMap = {
+    '116683': '咬人猫',
+    '49922172': '正直少年李发卡',
+    '927587': '木鱼水心',
+    '259333': '矮乐多Aliga'
+}
+
+
 var baseUrl = 'http://localhost:3003/bilibili'
+// var baseUrl = 'http://47.96.166.106:3003/bilibili'
 
 
 export default {
@@ -53,6 +64,7 @@ export default {
     data() {
         return {
             bannerImg: '',
+            likeData: null,
             rankDatas: [],
             recommendData: [],
             rankMap: rankMap,
@@ -72,7 +84,7 @@ export default {
             this.$http.get(baseUrl + '/rank?rid=' + rid).then(resp => {
                 if (resp.body.code == 0) {
                     // console.log(resp.body.data)
-                    this.rankDatas[i] = (resp.body.data)
+                    this.rankDatas[i] = resp.body.data
                 }
             })
         },
@@ -81,6 +93,17 @@ export default {
                 // console.log(resp.body)
                 if (resp.body.code == 0) {
                     this.recommendData = resp.body.data
+                }
+            })
+        },
+        _getLikeData(uid = '927587') {
+            this.$http.get(baseUrl + '/user/space?uid=' + uid).then(resp => {
+                console.log(resp.body)
+                if (resp.body.code == 0) {
+                    var card = resp.body.data.cards[0].card
+                    var cardData = JSON.parse(card)
+                    console.log(cardData)
+                    this.likeData = cardData
                 }
             })
         }
@@ -95,6 +118,7 @@ export default {
             this._getRankData(i, rid)
         }
         this._getRecommendData()
+        this._getLikeData()
     },
     components: {
         BilibiliHeader, BilibiliRank, BilibiliRecommend, BilibiliLike
@@ -110,9 +134,5 @@ export default {
     .el-tab-pane {
       padding-top: 5px;
       padding-left: 8px;
-    }
-
-    .banner {
-      position: relative;
     }
 </style>

@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div style="position: relative;">
         <a href="https://www.bilibili.com/" target="_blank">
             <img :src="bannerImg" alt="">
         </a>
         <div class="search">
             <form class="searchform" action="https://search.bilibili.com/all?" target="_blank">
-                <input type="text" autocomplete="off" placeholder="asmr" class="search-keyword" name="keyword" value="">
+                <input type="text" autocomplete="off" placeholder="asmr" class="search-keyword" name="keyword" value="" />
                 <button type="submit" class="search-submit"></button>
             </form>
             <a href="https://www.bilibili.com/ranking" target="_blank" class="link-ranking">
@@ -61,6 +61,9 @@ export default {
       -o-transition: 0.2s background-color;
       transition: background-color 0.2s;
     }
+    .search .searchform:hover {
+      background-color: #fff;
+    }
     .search .search-keyword {
       float: left;
       width: 200px;
@@ -75,9 +78,6 @@ export default {
       box-shadow: none;
       background-color: transparent;
     }
-    .search .search-keyword:hover {
-      background-color: #fff;
-    }
     .search button.search-submit {
       display: block;
       position: absolute;
@@ -88,7 +88,9 @@ export default {
       height: 32px;
       background: url(//static.hdslb.com/images/base/icons.png) -653px -720px;
     }
-
+    .search button.search-submit:hover {
+      background-position: -718px -720px;
+    }
     .search .link-ranking {
       position: absolute;
       left: 2px;
