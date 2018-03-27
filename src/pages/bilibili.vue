@@ -10,7 +10,13 @@
             </div>
             <h3>关注</h3>
             <div class="like" v-if="likeData">
-                <bilibili-like :likeData="likeData"></bilibili-like>
+                <bilibili-like :likeData="likeData" :type="'video'"></bilibili-like>
+            </div>
+            <div class="like" v-if="likeData2">
+                <bilibili-like :likeData="likeData2" :type="'video2'"></bilibili-like>
+            </div>
+            <div class="like" v-if="likeData2">
+                <bilibili-like :likeData="likeData3" :type="'image'"></bilibili-like>
             </div>
         </div>
         <div class="rank">
@@ -65,6 +71,8 @@ export default {
         return {
             bannerImg: '',
             likeData: null,
+            likeData2: null,
+            likeData3: null,
             rankDatas: [],
             recommendData: [],
             rankMap: rankMap,
@@ -98,12 +106,36 @@ export default {
         },
         _getLikeData(uid = '927587') {
             this.$http.get(baseUrl + '/user/space?uid=' + uid).then(resp => {
-                console.log(resp.body)
+                // console.log(resp.body)
                 if (resp.body.code == 0) {
                     var card = resp.body.data.cards[0].card
                     var cardData = JSON.parse(card)
-                    console.log(cardData)
+                    // console.log(cardData)
                     this.likeData = cardData
+                }
+            })
+        },
+        _getLikeData2(uid = '4548018') {
+            this.$http.get(baseUrl + '/user/space?uid=' + uid).then(resp => {
+                console.log(resp.body)
+                if (resp.body.code == 0) {
+                    var card = resp.body.data.cards[0].card
+                    var cardData2 = JSON.parse(card)
+                    cardData2.desc = resp.body.data.cards[0].desc
+                    console.log(cardData2)
+                    this.likeData2 = cardData2
+                }
+            })
+        },
+        _getLikeData3(uid = '4548018') {
+            this.$http.get(baseUrl + '/user/space?uid=' + uid).then(resp => {
+                console.log(resp.body)
+                if (resp.body.code == 0) {
+                    var card = resp.body.data.cards[2].card
+                    var cardData3 = JSON.parse(card)
+                    cardData3.desc = resp.body.data.cards[2].desc
+                    console.log(cardData3)
+                    this.likeData3 = cardData3
                 }
             })
         }
@@ -117,8 +149,10 @@ export default {
             const rid = this.rankArr[i]
             this._getRankData(i, rid)
         }
-        this._getRecommendData()
-        this._getLikeData()
+        // this._getRecommendData()
+        // this._getLikeData()
+        this._getLikeData2()
+        // this._getLikeData3()
     },
     components: {
         BilibiliHeader, BilibiliRank, BilibiliRecommend, BilibiliLike
