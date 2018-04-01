@@ -1,22 +1,21 @@
 <template>
     <div>
         <div class="card" v-if="type == 'video'">
+            <div class="user-head" :style="'background-image: url(' + likeData.owner.face + ');'"></div>
             <div class="main-content">
-                <a href="//bangumi.bilibili.com/anime/timeline" target="_blank" class="dp-i-block type-label c-pointer">{{ likeData.tname }}</a>
-                <p class="user-name yahei-16 dp-i-block">
+                <p class="user-name ">
                     <span class="c-pointer">{{ likeData.owner.name }}</span>
                 </p>
                 <p class="time">
-                    <a href="//t.bilibili.com/75660483191803960?tab=1" target="_blank" class="detail-link">
+                    <a target="_blank" class="detail-link">
                         <span>{{ likeData.pubdate | formatDate }}</span>
                     </a>
                 </p>
                 <div class="card-content">
+                    <div class="description"></div>
                     <div class="video-container">
                         <a target="_blank" :href="'https://www.bilibili.com/video/av' + likeData.aid">
-                            <div class="image-area">
-                                <img :src="likeData.pic">
-                            </div>
+                            <div class="image-area"><img :src="likeData.pic"></div>
                             <div class="text-area">
                                 <div class="title">{{ likeData.title}}</div>
                                 <div class="content">{{ likeData.desc }}</div>
@@ -35,12 +34,11 @@
                     </div>
                 </div>
             </div>
-            <div class="user-head c-pointer" :style="'background-image: url(&quot;' + likeData.owner.face + '&quot;);'">
-            </div>
+
         </div>
         <div class="card" v-if="type == 'video2'">
             <div class="main-content">
-                <p class="user-name yahei-16 dp-i-block">
+                <p class="user-name">
                     <span class="c-pointer">木鱼水心</span>
                 </p>
                 <p class="time">
@@ -49,7 +47,7 @@
                 <div class="repost">
                     <div class="up-info">
                         <a href="//space.bilibili.com/4548018/#/dynamic" target="_blank" class="up-info-avatar" style="background-image: url(&quot;https://i2.hdslb.com/bfs/face/5be61949369dd844cc459eab808da151d8c363d2.gif&quot;);" data-userinfo-popup-inited="true"></a>
-                        <a href="//space.bilibili.com/4548018/#/dynamic" target="_blank" class="username d-i-block up-info-name" data-userinfo-popup-inited="true">扎双马尾的丧尸</a>
+                        <a href="//space.bilibili.com/4548018/#/dynamic" target="_blank" class="username  up-info-name" data-userinfo-popup-inited="true">扎双马尾的丧尸</a>
                         <div class="up-info-tip">的投稿视频</div>
                     </div>
                     <div class="card-content">
@@ -83,36 +81,25 @@
             <div class="user-head c-pointer" style="background-image: url(&quot;https://i2.hdslb.com/bfs/face/696df59d35c78430f1a0bdb6184558e7b7eb4a6e.jpg&quot;);">
             </div>
         </div>
-        <div class="card" style="margin-top: 8px; border-radius: 8px;" v-if="type == 'image'">
+        <div class="card" v-if="type == 'image'">
+            <div class="user-head c-pointer" :style="'background-image: url(' + likeData.user.head_url + ');'"></div>
             <div class="main-content">
-                <p class="user-name fs-16 ls-0 d-i-block">
+                <p class="user-name">
                     <span class="c-pointer">{{ likeData.user.name }}</span>
                 </p>
-                <p class="time fs-12 ls-0 tc-slate">
-                    <a :href="getDynamicId(likeData.desc.dynamic_id)" target="_blank" class="detail-link tc-slate">{{ likeData.item.upload_time | formatDate('YY-MM-DD') }}</a>
+                <p class="time">
+                    <a :href="'http://h.bilibili.com/' + likeData.item.id" target="_blank" class="detail-link">{{ likeData.item.upload_time | formatDate('YY-MM-DD') }}</a>
                 </p>
                 <div class="card-content">
-                    <div class="post-content">
-                        <div class="album">
-                            <div class="text p-rel description">
-                                <div class="content">
-                                    <div class="content-full hidden">{{ likeData.item.description }}</div>
-                                </div>
-                            </div>
-                            <div class="imagesbox">
-                                <div class="zoom-wrap">
-                                    <ul class="zoom-list list-none zoom-6">
-                                        <li class="card card-6" v-for="(item, index ) in likeData.item.pictures" :key="index">
-                                            <img :src="item.img_src + '@104w_104h_1e_1c.webp'">
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="description">{{ likeData.item.description }}</div>
+                    <div class="imagesbox">
+                        <ul class="img-list">
+                            <li class="img-card" v-for="(item, index ) in likeData.item.pictures" :key="index">
+                                <img :src="item.img_src + '@104w_104h_1e_1c.webp'">
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div class="user-head c-pointer" :style="'background-image: url(' + likeData.user.head_url + ');'">
             </div>
         </div>
     </div>
@@ -187,6 +174,8 @@ export default {
       margin-left: 88px;
     }
     .card .main-content .user-name {
+      font-size: 16px;
+      letter-spacing: 0;
       color: #222;
     }
     .card .main-content .user-name span:hover {
@@ -214,6 +203,7 @@ export default {
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
+      cursor: pointer;
     }
     .repost {
       position: relative;
@@ -270,20 +260,21 @@ export default {
     }
 
     .card-content {
-      margin-top: 10px;
+      margin-top: 5px;
+      padding-bottom: 12px;
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
-      padding-bottom: 10px;
     }
     .description {
       max-width: 100%;
       display: inline-block;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       font-size: 14px;
       line-height: 22px;
       word-wrap: break-word;
+      color: #222;
     }
-    .description.active {
+    .description:hover {
       color: #23ade5;
       cursor: pointer;
     }
@@ -295,18 +286,22 @@ export default {
       border-radius: 4px;
       text-align: left;
       position: relative;
-      border: 1px solid #e5e9ef;
+      border: 1px solid #e6e5ef;
       overflow: hidden;
-      z-index: 1;
       cursor: pointer;
     }
+    .video-container:hover {
+      border: 1px solid #23ade5;
+    }
+
+    .video-container:hover .text-area .title {
+      color: #23ade5;
+    }
+
     .video-container .image-area,
     .video-container .text-area {
       display: inline-block;
       vertical-align: top;
-    }
-    .video-container:hover .text-area .title {
-      color: #23ade5;
     }
     .video-container .image-area {
       width: 203px;
@@ -372,33 +367,33 @@ export default {
     }
 
     .imagesbox {
-      width: 518px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+      width: 521px;
       text-align: center;
+      border: 1px solid #e6e5ef;
+      border-radius: 6px;
     }
 
-    .imagesbox .zoom-wrap .zoom-list {
+    .imagesbox:hover {
+      border: 1px solid #23ade5;
+    }
+
+    .imagesbox .img-list {
       line-height: 0;
       text-align: left;
-      margin-top: -4px;
-      margin-left: -4px;
       vertical-align: top;
+      margin: 0;
+      padding: 5px;
     }
 
-    .imagesbox .zoom-wrap .zoom-list .card {
+    .imagesbox .img-list .img-card {
+      display: inline-block;
       width: 104px;
       height: 104px;
-      margin: 4px 0 0 4px;
-      display: inline-block;
       vertical-align: top;
       overflow: hidden;
       border-radius: 6px;
       position: relative;
-      cursor: -webkit-zoom-in;
-      cursor: zoom-in;
+      margin: 5px 10px;
     }
 
     .c-pointer {

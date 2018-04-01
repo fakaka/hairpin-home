@@ -15,7 +15,7 @@
             <div class="like" v-if="likeData2">
                 <bilibili-like :likeData="likeData2" :type="'video2'"></bilibili-like>
             </div>
-            <div class="like" v-if="likeData2">
+            <div class="like" v-if="likeData3">
                 <bilibili-like :likeData="likeData3" :type="'image'"></bilibili-like>
             </div>
         </div>
@@ -127,13 +127,20 @@ export default {
                 }
             })
         },
-        _getLikeData3(uid = '4548018') {
+        /**
+         * desc.type 
+         * 1 = 转发 
+         * 2 = 图片
+         * 4 = 文字
+         * 8 = 视频
+         * 16= 小视频
+         */
+        _getLikeData3(uid = '259333') {
             this.$http.get(baseUrl + '/user/space?uid=' + uid).then(resp => {
                 console.log(resp.body)
                 if (resp.body.code == 0) {
                     var card = resp.body.data.cards[2].card
                     var cardData3 = JSON.parse(card)
-                    cardData3.desc = resp.body.data.cards[2].desc
                     console.log(cardData3)
                     this.likeData3 = cardData3
                 }
@@ -149,10 +156,10 @@ export default {
             const rid = this.rankArr[i]
             this._getRankData(i, rid)
         }
-        // this._getRecommendData()
-        // this._getLikeData()
-        this._getLikeData2()
-        // this._getLikeData3()
+        this._getRecommendData()
+        this._getLikeData()
+        // this._getLikeData2()
+        this._getLikeData3()
     },
     components: {
         BilibiliHeader, BilibiliRank, BilibiliRecommend, BilibiliLike

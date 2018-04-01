@@ -155,7 +155,7 @@ export default {
             })
         },
         _getCNodeData(pageSize = 10) {
-            this.$http.get(baseUrl + '/cnode?limit=' + pageSize).then(resp => {
+            this.$http.get(baseUrl + '/cnode?pagesize=' + pageSize).then(resp => {
                 // console.log(resp.body)
                 if (resp.body.success) {
                     this.cnodeNews = resp.body.data
