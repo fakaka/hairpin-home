@@ -1,5 +1,6 @@
 <template>
     <div>
+        <bilibili-like-repost :repostData="likeData" v-if="likeData.type.type == 1"></bilibili-like-repost>
         <bilibili-like-image :imgData="likeData" v-if="likeData.type.type == 2"></bilibili-like-image>
         <bilibili-like-text :imgData="likeData" v-if="likeData.type.type == 4"></bilibili-like-text>
         <bilibili-like-video :videoData="likeData" v-if="likeData.type.type == 8"></bilibili-like-video>
@@ -12,6 +13,7 @@ import bilibiliLikeImage from './bilibili-like/image'
 import bilibiliLikeText from './bilibili-like/text'
 import bilibiliLikeVideo from './bilibili-like/video'
 import bilibiliLikeVcVideo from './bilibili-like/vc-video'
+import bilibiliLikeRepost from './bilibili-like/repost'
 
 /**
  * desc.type 
@@ -20,6 +22,7 @@ import bilibiliLikeVcVideo from './bilibili-like/vc-video'
  * 4 = 文字
  * 8 = 视频
  * 16= 小视频
+ * 64= 文章
  */
 
 export default {
@@ -65,7 +68,8 @@ export default {
         }
     },
     components: {
-        bilibiliLikeImage, bilibiliLikeText, bilibiliLikeVideo, bilibiliLikeVcVideo
+        bilibiliLikeImage, bilibiliLikeText, bilibiliLikeVideo, bilibiliLikeVcVideo,
+        bilibiliLikeRepost
     }
 }
 </script>
@@ -189,10 +193,10 @@ export default {
       font-size: 14px;
       line-height: 22px;
       word-wrap: break-word;
+      cursor: pointer;
       color: #222;
     }
     .description:hover {
       color: #23ade5;
-      cursor: pointer;
     }
 </style>

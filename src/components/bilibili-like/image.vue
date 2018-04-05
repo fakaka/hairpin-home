@@ -12,7 +12,7 @@
                 <div class="description">{{ imgData.item.description }}</div>
                 <div class="imagesbox" v-if="imgData.item.pictures">
                     <ul class="img-list">
-                        <li class="img-card" v-for="(item, index ) in imgData.item.pictures" :key="index">
+                        <li class="img-card" v-for="(item, index) in imgData.item.pictures" :key="index">
                             <img :src="item.img_src + '@104w_104h_1e_1c.webp'">
                         </li>
                     </ul>
@@ -94,5 +94,4 @@ export default {
     .imagesbox .img-list .img-card:hover {
       box-shadow: 0 0 4px rgba(0, 160, 214, 0.7);
     }
-
 </style>
