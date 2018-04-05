@@ -1,23 +1,32 @@
 <template>
     <div>
-        <bilibili-like-video :videoData="likeData" v-if="type == 'video'"></bilibili-like-video>
-        <bilibili-like-image :imgData="likeData" v-if="type == 'image'"></bilibili-like-image>
+        <bilibili-like-image :imgData="likeData" v-if="likeData.type.type == 2"></bilibili-like-image>
+        <bilibili-like-text :imgData="likeData" v-if="likeData.type.type == 4"></bilibili-like-text>
+        <bilibili-like-video :videoData="likeData" v-if="likeData.type.type == 8"></bilibili-like-video>
+        <bilibili-like-vc-video :videoData="likeData" v-if="likeData.type.type == 16"></bilibili-like-vc-video>
     </div>
 </template>
 
 <script>
-import bilibiliLikeImage from './bilibili-like-image'
-import bilibiliLikeVideo from './bilibili-like-video'
+import bilibiliLikeImage from './bilibili-like/image'
+import bilibiliLikeText from './bilibili-like/text'
+import bilibiliLikeVideo from './bilibili-like/video'
+import bilibiliLikeVcVideo from './bilibili-like/vc-video'
+
+/**
+ * desc.type 
+ * 1 = 转发 
+ * 2 = 图片
+ * 4 = 文字
+ * 8 = 视频
+ * 16= 小视频
+ */
 
 export default {
     name: 'bilibili-like',
     props: {
         likeData: {
             type: Object
-        },
-        type: {
-            type: String,
-            default: 'video'
         }
     },
     data() {
@@ -56,7 +65,7 @@ export default {
         }
     },
     components: {
-        bilibiliLikeImage, bilibiliLikeVideo
+        bilibiliLikeImage, bilibiliLikeText, bilibiliLikeVideo, bilibiliLikeVcVideo
     }
 }
 </script>
@@ -169,6 +178,12 @@ export default {
     }
     .description {
       max-width: 100%;
+      max-height: 88px;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: justify;
       display: inline-block;
       margin-bottom: 5px;
       font-size: 14px;

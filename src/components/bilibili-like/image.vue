@@ -10,7 +10,7 @@
             </p>
             <div class="card-content">
                 <div class="description">{{ imgData.item.description }}</div>
-                <div class="imagesbox">
+                <div class="imagesbox" v-if="imgData.item.pictures">
                     <ul class="img-list">
                         <li class="img-card" v-for="(item, index ) in imgData.item.pictures" :key="index">
                             <img :src="item.img_src + '@104w_104h_1e_1c.webp'">
@@ -73,10 +73,6 @@ export default {
       border-radius: 6px;
     }
 
-    .imagesbox:hover {
-      /* border: 1px solid #23ade5; */
-    }
-
     .imagesbox .img-list {
       line-height: 0;
       text-align: left;
@@ -96,14 +92,7 @@ export default {
       margin: 5px 11px;
     }
     .imagesbox .img-list .img-card:hover {
-      box-shadow: 0 0 5px #00a1d6;
+      box-shadow: 0 0 4px rgba(0, 160, 214, 0.7);
     }
 
-    .c-pointer {
-      cursor: pointer;
-    }
-    .yahei-16 {
-      font-size: 16px;
-      letter-spacing: 0;
-    }
 </style>
