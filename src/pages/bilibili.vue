@@ -4,20 +4,20 @@
             <bilibili-header :bannerImg="bannerImg"></bilibili-header>
         </div>
         <div class="left">
-            <h3>推荐</h3>
             <div class="recommend" v-if="recommendData.length">
+                <h3>推荐</h3>
                 <bilibili-recommend :recommendData="recommendData"></bilibili-recommend>
             </div>
-            <h3>关注</h3>
             <div class="like">
                 <div class="like" v-if="likeData">
+                    <h3>关注</h3>
                     <bilibili-like :likeData="likeData" :type="'video'"></bilibili-like>
                 </div>
             </div>
         </div>
         <div class="rank">
-            <h3>排行</h3>
             <el-tabs tab-position="left" style="height: 730px;" v-if="rankDatas.length == 5">
+                <h3>排行</h3>
                 <el-tab-pane v-for="(rankData, index) in rankDatas" :key="index" :label="rankMap[rankArr[index]]">
                     <bilibili-rank :label="rankMap[rankArr[index]]" :rankData="rankData"></bilibili-rank>
                 </el-tab-pane>
@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import BilibiliHeader from "@/components/bilibili-header"
-import BilibiliRecommend from "@/components/bilibili-recommend"
-import BilibiliRank from "@/components/bilibili-rank"
-import BilibiliLike from "@/components/bilibili-like"
+import BilibiliHeader from '@/components/bilibili-header'
+import BilibiliRecommend from '@/components/bilibili-recommend'
+import BilibiliRank from '@/components/bilibili-rank'
+import BilibiliLike from '@/components/bilibili-like'
 
 const rankMap = {
     '1': '动画',
@@ -57,10 +57,8 @@ const likeMap = {
     '259333': '矮乐多Aliga'
 }
 
-
 var baseUrl = 'http://localhost:3003/bilibili'
 // var baseUrl = 'http://47.96.166.106:3003/bilibili'
-
 
 export default {
     name: 'bilibili',
@@ -101,8 +99,8 @@ export default {
             })
         },
         /**
-         * desc.type 
-         * 1 = 转发 
+         * desc.type
+         * 1 = 转发
          * 2 = 图片
          * 4 = 文字
          * 8 = 视频
@@ -119,10 +117,9 @@ export default {
                     this.likeData = cardData
                 }
             })
-        },
+        }
     },
-    computed: {
-    },
+    computed: {},
     mounted() {
         this._getBanner()
         this.rankDatas = []
@@ -137,18 +134,21 @@ export default {
         this._getLikeData('1678535', 3)
     },
     components: {
-        BilibiliHeader, BilibiliRank, BilibiliRecommend, BilibiliLike
+        BilibiliHeader,
+        BilibiliRank,
+        BilibiliRecommend,
+        BilibiliLike
     }
 }
 </script>
 
 <style scoped>
     .rank {
-      padding-top: 8px;
-      padding-right: 8px;
+        padding-top: 8px;
+        padding-right: 8px;
     }
     .el-tab-pane {
-      padding-top: 5px;
-      padding-left: 8px;
+        padding-top: 5px;
+        padding-left: 8px;
     }
 </style>
