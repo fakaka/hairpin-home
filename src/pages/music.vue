@@ -37,12 +37,15 @@
                 <music-list :tableData="tableData4"></music-list>
             </el-tab-pane>
         </el-tabs>
+        <div class="player">
+            <audio controls="controls" :src="url"></audio>
+        </div>
 
     </div>
 </template>
 
 <script>
-import MusicList from "@/components/music-list"
+import MusicList from '@/components/music-list'
 
 export default {
     name: 'music',
@@ -52,97 +55,93 @@ export default {
             items: [
                 'http://p1.music.126.net/pXK6K_3UQMRCm8M1LdRMBQ==/109951163111294398.jpg',
                 'http://p1.music.126.net/1uWIQxcgunObfR76YLofHg==/109951163111295860.jpg',
-                'http://p1.music.126.net/56rJnp0_26R2Aj0LufKaRw==/109951163111320482.jpg',
+                'http://p1.music.126.net/56rJnp0_26R2Aj0LufKaRw==/109951163111320482.jpg'
             ],
-            tableData: [
-                {
-                    date: '说散就散',
-                    name: '说散就散',
-                    duration: '04:02',
-                    singer: '袁娅维'
-                }
-            ],
-            tableData2: [
-                {
-                    date: '--',
-                    name: '讲真的',
-                    duration: '03:58',
-                    singer: '曾惜'
-                }
-            ],
+            tableData: [],
+            tableData2: [],
             tableData3: [],
-            tableData4: [
-                {
-                    date: '--',
-                    name: 'II quiet romance (杀人考察(前))',
-                    duration: '02:26',
-                    singer: '梶浦由記'
-                }
-            ],
-            today: new Date().getDate()
+            tableData4: [],
+            today: new Date().getDate(),
+            url: 'http://music.163.com/song/media/outer/url?id=id.mp3'
         }
     },
     methods: {
         _getTops() {
-            this.$http.get('http://localhost:3003/music/top?idx=1').then(resp => {
-                // console.log(resp.body)
-                if (resp.body.code == 200) {
-                    var array = resp.body.playlist.tracks
-                    if (array.length < 15) {
-                        return
+            this.$http
+                .get('http://localhost:3003/music/top?idx=1')
+                .then(resp => {
+                    console.log(resp.body)
+                    if (resp.body.code == 200) {
+                        var array = resp.body.playlist.tracks
+                        if (array.length < 15) {
+                            return
+                        }
+                        this.tableData = []
+                        for (let i = 0; i < 15; i++) {
+                            const element = array[i]
+                            var newData = this.formatData(element)
+                            this.tableData.push(newData)
+                        }
                     }
-                    this.tableData = []
-                    for (let i = 0; i < 15; i++) {
-                        const element = array[i]
-                        var newData = this.formatData(element)
-                        this.tableData.push(newData)
-                    }
-                }
-            })
+                })
         },
         _getTopArtist() {
-            this.$http.get('http://localhost:3003/music/top/artist').then(resp => {
-                // console.log(resp.body)
-                if (resp.body.code == 200) {
-                    this.tableData3 = resp.body.artists
-                }
-            })
+            this.$http
+                .get('http://localhost:3003/music/top/artist')
+                .then(resp => {
+                    // console.log(resp.body)
+                    if (resp.body.code == 200) {
+                        this.tableData3 = resp.body.artists
+                    }
+                })
         },
         _getLikes() {
-            this.$http.get('http://localhost:3003/music/playlist/detail?id=52177186').then(resp => {
-                // console.log(resp.body)
-                if (resp.body.code == 200) {
-                    var array = resp.body.result.tracks
-                    if (array.length < 15) {
-                        return
+            this.$http
+                .get('http://localhost:3003/music/playlist/detail?id=52177186')
+                .then(resp => {
+                    // console.log(resp.body)
+                    if (resp.body.code == 200) {
+                        var array = resp.body.result.tracks
+                        if (array.length < 15) {
+                            return
+                        }
+                        this.tableData2 = []
+                        for (let i = 0; i < 15; i++) {
+                            const element = array[i]
+                            var newData = this.formatData2(element)
+                            this.tableData2.push(newData)
+                        }
                     }
-                    this.tableData2 = []
-                    for (let i = 0; i < 15; i++) {
-                        const element = array[i]
-                        var newData = this.formatData2(element)
-                        this.tableData2.push(newData)
-                    }
-                }
-            })
+                })
         },
         _getPlaylist(id = 112875926) {
-            this.$http.get('http://localhost:3003/music/playlist/detail?id=' + id).then(resp => {
-                // console.log(resp.body)
-                if (resp.body.code == 200) {
-                    var array = resp.body.result.tracks
-                    if (array.length < 15) {
-                        return
+            this.$http
+                .get('http://localhost:3003/music/playlist/detail?id=' + id)
+                .then(resp => {
+                    // console.log(resp.body)
+                    if (resp.body.code == 200) {
+                        var array = resp.body.result.tracks
+                        if (array.length < 15) {
+                            return
+                        }
+                        this.tableData4 = []
+                        for (let i = 0; i < 15; i++) {
+                            const element = array[i]
+                            var newData = this.formatData2(element)
+                            this.tableData4.push(newData)
+                        }
                     }
-                    this.tableData4 = []
-                    for (let i = 0; i < 15; i++) {
-                        const element = array[i]
-                        var newData = this.formatData2(element)
-                        this.tableData4.push(newData)
-                    }
-                }
-            })
+                })
         },
         clickRow(a, b, c) {
+            this.$http.get('http://localhost:3003/music/song/url?id=29759733')
+                .then(resp => {
+                    console.log(resp.body)
+                    if (resp.body.code == 200) {
+                        this.url= resp.body.data[0].url
+                    }
+                })
+
             console.log(a, b, c)
         },
         formatData(data) {
@@ -200,28 +199,28 @@ export default {
 </script>
 
 <style scoped>
-    .el-carousel__item {
-      background-color: #d3dce6;
-    }
+.el-carousel__item {
+    background-color: #d3dce6;
+}
 
-    .el-carousel__item img {
-      /* opacity: 0.9; */
-      height: 350px;
-      line-height: 350px;
-      width: 70%;
-      margin: 0 15%;
-    }
+.el-carousel__item img {
+    /* opacity: 0.9; */
+    height: 350px;
+    line-height: 350px;
+    width: 70%;
+    margin: 0 15%;
+}
 
-    .el-tab-pane {
-      overflow-y: scroll;
-    }
-    li {
-      display: inline-block;
-      width: 140px;
-      height: 188px;
-      overflow: hidden;
-      padding: 0 0 10px 35px;
-      line-height: 1.4;
-      font-size: 12px;
-    }
+.el-tab-pane {
+    overflow-y: scroll;
+}
+li {
+    display: inline-block;
+    width: 140px;
+    height: 188px;
+    overflow: hidden;
+    padding: 0 0 10px 35px;
+    line-height: 1.4;
+    font-size: 12px;
+}
 </style>
