@@ -134,11 +134,12 @@ export default {
                 })
         },
         clickRow(a, b, c) {
-            this.$http.get('http://localhost:3003/music/song/url?id=29759733')
+            this.$http
+                .get('http://localhost:3003/music/song/url?id=29759733')
                 .then(resp => {
                     console.log(resp.body)
                     if (resp.body.code == 200) {
-                        this.url= resp.body.data[0].url
+                        this.url = resp.body.data[0].url
                     }
                 })
 

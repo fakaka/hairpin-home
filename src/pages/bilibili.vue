@@ -113,7 +113,7 @@ export default {
                     var card = resp.body.data.cards[idx].card
                     var cardData = JSON.parse(card)
                     cardData.type = resp.body.data.cards[idx].desc
-                    console.log(cardData)
+                    // console.log(cardData)
                     this.likeData = cardData
                 }
             })
