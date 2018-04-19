@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import SockJS from 'sockjs-client';
-import Stomp from 'stompjs';
+import SockJS from 'sockjs-client'
+import Stomp from 'stompjs'
 
 var stompClient = null
 
@@ -19,25 +19,33 @@ export default {
     data() {
         return {
             devMode: false,
-            someData: '55'
+            someData: '消息区域'
         }
     },
     methods: {
         sendName() {
-            stompClient.send("/welcome", {}, JSON.stringify({
-                'name': 666
-            }));
+            stompClient.send(
+                '/welcome2',
+                {},
+                JSON.stringify({
+                    name: 666
+                })
+            )
         },
         notify() {
-            var notification = new Notification('这是一个通知', { body: '内容' })
-            notification.onclick = function (event) {
-                event.preventDefault(); // prevent the browser from focusing the Notification's tab
-                window.open('http://www.mozilla.org', '_blank');
+            var notification = new Notification('这是一个通知', {
+                body: '内容'
+            })
+            notification.onclick = function(event) {
+                event.preventDefault() // prevent the browser from focusing the Notification's tab
+                window.open('http://www.mozilla.org', '_blank')
             }
         },
         notify2() {
             new Notification('图片通知', {
-                body: 'GitHub', image: 'https://avatars1.githubusercontent.com/u/12379312?s=460&v=4'
+                body: 'GitHub',
+                image:
+                    'https://avatars1.githubusercontent.com/u/12379312?s=460&v=4'
             })
         },
         _getApi() {
@@ -49,14 +57,13 @@ export default {
         _initWebSocket() {
             var socket = new SockJS('http://localhost:8088/endpointHairpin')
             stompClient = Stomp.over(socket)
-            stompClient.connect({}, (frame) => {
-                console.log('开始进行连接Connected: ' + frame)
-                stompClient.subscribe('/topic/getResponse', (respnose) => {
-                    var resp = JSON.parse(respnose.body)
-                    if (resp.code == 0) {
-                        this.someData = resp.data
-                        this.showMessage('/topic/getResponse', resp.data.msg)
-                    }
+            stompClient.connect({}, frame => {
+                stompClient.subscribe('/notify', respnose => {
+                    var data = JSON.parse(respnose.body)
+                    // if (resp.code == 0) {
+                    this.showMessage(data.title, data.content)
+                    this.someData = data.content
+                    // }
                 })
             })
         },
@@ -78,16 +85,16 @@ export default {
             console.log('sse')
             var es = new EventSource('http://localhost:8088/sse')
             var count = 0
-            es.onopen = (e) => {
+            es.onopen = e => {
                 count = 0
                 console.log('connect success', count)
             }
 
-            es.onmessage = (e) => {
+            es.onmessage = e => {
                 console.log(e.data)
                 // this.showMessage('无标题', e.data)
             }
-            es.onerror = (e) => {
+            es.onerror = e => {
                 console.log(e)
                 count++
                 if (count > 3) {
@@ -95,37 +102,26 @@ export default {
                 }
             }
 
-            es.addEventListener('weibo', function (e) {
+            es.addEventListener('weibo', function(e) {
                 console.log('weibo')
                 console.log(e.data)
             })
-            es.addEventListener('ins', function (e) {
+            es.addEventListener('ins', function(e) {
                 console.log('ins', e.data)
             })
-
-
         }
     },
     mounted() {
         // this._getApi()
 
-        // this._initWebSocket()
+        this._initWebSocket()
 
-        this._initSSE()
-
-
-
-
-
-
+        // this._initSSE()
     },
     computed: {},
-    components: {
-
-    }
+    components: {}
 }
 </script>
 
 <style>
-
 </style>
