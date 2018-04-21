@@ -26,7 +26,8 @@
                                 </a>
                             </div>
                             <p>
-                                <a :href="'http://music.163.com/#/artist?id=' + item.id" target="_blank" :title="item.name">{{ item.name }}</a>
+                                <a :href="'http://music.163.com/#/artist?id=' + item.id" 
+                                    target="_blank" :title="item.name">{{ item.name }}</a>
                             </p>
                         </li>
                     </ul>
@@ -62,7 +63,7 @@ export default {
             tableData3: [],
             tableData4: [],
             today: new Date().getDate(),
-            url: 'http://music.163.com/song/media/outer/url?id=id.mp3'
+            url: ''
         }
     },
     methods: {
@@ -133,20 +134,20 @@ export default {
                     }
                 })
         },
-        clickRow(a, b, c) {
+        clickRow(row) {
+            // console.log(row)
             this.$http
-                .get('http://localhost:3003/music/song/url?id=29759733')
+                .get('http://localhost:3003/music/song/url?id=' + row.sid)
                 .then(resp => {
                     console.log(resp.body)
                     if (resp.body.code == 200) {
                         this.url = resp.body.data[0].url
                     }
                 })
-
-            console.log(a, b, c)
         },
         formatData(data) {
             let res = {}
+            res.sid = data.id
             res.name = data.name
             let singer = ''
             for (let i = 0; i < data.ar.length; i++) {
@@ -167,6 +168,7 @@ export default {
         },
         formatData2(data) {
             let res = {}
+            res.sid = data.sid
             res.name = data.name
             let singer = ''
             for (let i = 0; i < data.artists.length; i++) {

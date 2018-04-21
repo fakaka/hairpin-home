@@ -18,19 +18,13 @@ export default {
     props: {},
     data() {
         return {
-            devMode: false,
+            devMode: true,
             someData: '消息区域'
         }
     },
     methods: {
         sendName() {
-            stompClient.send(
-                '/welcome2',
-                {},
-                JSON.stringify({
-                    name: 666
-                })
-            )
+            stompClient.send('/welcome2', {}, '666')
         },
         notify() {
             var notification = new Notification('这是一个通知', {
@@ -55,20 +49,22 @@ export default {
             })
         },
         _initWebSocket() {
-            var socket = new SockJS('http://localhost:8088/endpointHairpin')
+            var socket = new SockJS('http://localhost:8088/endpoint-hairpin')
             stompClient = Stomp.over(socket)
+            // 去掉 debug 信息
+            if (!this.devMode) {
+                stompClient.debug = null
+            }
             stompClient.connect({}, frame => {
                 stompClient.subscribe('/notify', respnose => {
                     var data = JSON.parse(respnose.body)
-                    // if (resp.code == 0) {
-                    this.showMessage(data.title, data.content)
+                    this.showMessage(data.title || 'untitled', data.content)
                     this.someData = data.content
-                    // }
                 })
             })
         },
         showMessage(title, message) {
-            this.$notify({
+            this.$message({
                 title: title,
                 message: message,
                 type: 'success',
