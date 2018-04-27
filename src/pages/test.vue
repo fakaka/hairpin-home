@@ -18,7 +18,7 @@ export default {
     props: {},
     data() {
         return {
-            devMode: true,
+            devMode: false,
             someData: '消息区域'
         }
     },
@@ -110,7 +110,7 @@ export default {
     mounted() {
         // this._getApi()
 
-        this._initWebSocket()
+        // this._initWebSocket()
 
         // this._initSSE()
     },

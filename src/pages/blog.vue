@@ -1,29 +1,26 @@
 <template>
     <div>
-        <blog-article></blog-article>
+        <blog-list></blog-list>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import BlogArticle from "@/components/blog-article"
+import BlogArticle from '@/components/blog-article'
+import BlogList from '@/components/blog-list'
 
 export default {
     name: 'blog',
-    props: {
-        
-    },
+    props: {},
     data() {
-        return {
-        }
+        return {}
     },
-    methods: {
-    },
-    mounted() {
-    },
-    computed: {
-    },
+    methods: {},
+    mounted() {},
+    computed: {},
     components: {
-        BlogArticle
+        BlogArticle,
+        BlogList
     }
 }
 </script>

@@ -37,22 +37,22 @@ export default {
                     name: '主页'
                 },
                 {
-                    index: 'bilibili',
+                    index: '/bilibili',
                     name: '哔哩哔哩'
                 }, {
-                    index: 'music',
+                    index: '/music',
                     name: '音乐'
                 }, {
-                    index: 'news',
+                    index: '/news',
                     name: '新闻'
                 }, {
-                    index: 'todo',
+                    index: '/todo',
                     name: '待办'
                 }, {
-                    index: 'blog',
+                    index: '/blog',
                     name: '博客'
                 }, {
-                    index: 'test',
+                    index: '/test',
                     name: '测试'
                 }
             ]

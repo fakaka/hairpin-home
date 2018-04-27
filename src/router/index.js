@@ -8,6 +8,7 @@ import Music from '@/pages/music'
 import News from '@/pages/news'
 import Todo from '@/pages/todo'
 import Blog from '@/pages/blog'
+import BlogArticle from '@/components/blog-article'
 import Test from '@/pages/test'
 
 Vue.use(Router)
@@ -48,13 +49,18 @@ export default new Router({
         {
             path: '/blog',
             name: 'blog',
-            component: Blog
+            component: Blog,
+            children: [
+                {
+                    path: ':id',
+                    component: BlogArticle
+                }
+            ]
         },
         {
             path: '/test',
             name: 'test',
             component: Test
-        },
-
+        }
     ]
 })
