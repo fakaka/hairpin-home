@@ -3,9 +3,8 @@
         <ul class="collection">
             <li class="collection-item list">
                 <div class="list-title">
-                    <a href="http://localhost:3002/home/blog/73">Redis</a>
+                    <h3>Redis</h3>
                 </div>
-
                 <div class="list-desc">
                     Redis 主从复制
                 </div>
