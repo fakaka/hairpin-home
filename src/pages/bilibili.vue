@@ -1,25 +1,34 @@
 <template>
     <div class="bilibili">
-        <div class="banner" style="margin-left: -50%;height:180px;">
+        <div class="banner"
+             style="margin-left: -50%;height:180px;margin-bottom:10px">
             <bilibili-header :bannerImg="bannerImg"></bilibili-header>
         </div>
         <div class="left">
-            <div class="recommend" v-if="recommendData.length">
+            <div class="recommend"
+                 v-if="recommendData.length">
                 <h3>推荐</h3>
                 <bilibili-recommend :recommendData="recommendData"></bilibili-recommend>
             </div>
             <div class="like">
-                <div class="like" v-if="likeData">
+                <div class="like"
+                     v-if="likeData">
                     <h3>关注</h3>
-                    <bilibili-like :likeData="likeData" :type="'video'"></bilibili-like>
+                    <bilibili-like :likeData="likeData"
+                                   :type="'video'"></bilibili-like>
                 </div>
             </div>
         </div>
         <div class="rank">
-            <el-tabs tab-position="left" style="height: 730px;" v-if="rankDatas.length == 5">
-                <h3>排行</h3>
-                <el-tab-pane v-for="(rankData, index) in rankDatas" :key="index" :label="rankMap[rankArr[index]]">
-                    <bilibili-rank :label="rankMap[rankArr[index]]" :rankData="rankData"></bilibili-rank>
+            <h3>排行</h3>
+            <el-tabs tab-position="left"
+                     style="height: 730px;"
+                     v-if="rankDatas.length == 5">
+                <el-tab-pane v-for="(rankData, index) in rankDatas"
+                             :key="index"
+                             :label="rankMap[rankArr[index]]">
+                    <bilibili-rank :label="rankMap[rankArr[index]]"
+                                   :rankData="rankData"></bilibili-rank>
                 </el-tab-pane>
             </el-tabs>
         </div>

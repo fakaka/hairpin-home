@@ -1,5 +1,5 @@
 <template>
-    <div style="position: relative;">
+    <div style="position: relative;" v-if="bannerImg">
         <a href="https://www.bilibili.com/" target="_blank">
             <img :src="bannerImg" alt="">
         </a>
