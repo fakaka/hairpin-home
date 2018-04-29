@@ -86,10 +86,10 @@ export default {
       min-width: 0;
       cursor: pointer;
       height: 32px;
-      background: url(//static.hdslb.com/images/base/icons.png) -653px -720px;
+      background: url(//static.hdslb.com/images/base/icons.png) -646px -721px;
     }
     .search button.search-submit:hover {
-      background-position: -718px -720px;
+      background-position: -711px -721px;
     }
     .search .link-ranking {
       position: absolute;

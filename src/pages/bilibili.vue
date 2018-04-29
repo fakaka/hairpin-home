@@ -19,11 +19,11 @@
                 </div>
             </div>
         </div>
-        <div class="rank">
+        <div class="rank"
+             v-if="rankDatas.length == 5">
             <h3>排行</h3>
             <el-tabs tab-position="left"
-                     style="height: 730px;"
-                     v-if="rankDatas.length == 5">
+                     style="height: 730px;">
                 <el-tab-pane v-for="(rankData, index) in rankDatas"
                              :key="index"
                              :label="rankMap[rankArr[index]]">
@@ -74,7 +74,8 @@ export default {
     props: {},
     data() {
         return {
-            bannerImg: '',
+            bannerImg:
+                'http://i0.hdslb.com/bfs/archive/0ac04c23af3b3297bf02dca163474326898d211d.png',
             likeData: null,
             rankDatas: [],
             recommendData: [],

@@ -6,7 +6,6 @@ import Info from '@/pages/info'
 import Bilibili from '@/pages/bilibili'
 import Music from '@/pages/music'
 import News from '@/pages/news'
-import Todo from '@/pages/todo'
 import Blog from '@/pages/blog'
 import BlogArticle from '@/components/blog-article'
 import Test from '@/pages/test'
@@ -40,11 +39,6 @@ export default new Router({
             path: '/news',
             name: 'news',
             component: News
-        },
-        {
-            path: '/todo',
-            name: 'todo',
-            component: Todo
         },
         {
             path: '/blog',

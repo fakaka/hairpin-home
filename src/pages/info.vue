@@ -1,21 +1,32 @@
 <template>
     <div>
         <el-row>
-            <el-switch v-model="showPic" active-color="#13ce66" active-text="打开相册" inactive-text="关闭">
+            <el-switch v-model="showPic"
+                       active-color="#13ce66"
+                       active-text="打开相册"
+                       inactive-text="关闭">
             </el-switch>
             <hr>
             <el-col :span="12">
-                <img v-show="showPic" :src="picUrl" height="650">
+                <img v-show="showPic"
+                     :src="picUrl"
+                     height="650">
             </el-col>
             <el-col :span="12">
                 <weather></weather>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="12">
+                <todo></todo>
             </el-col>
         </el-row>
     </div>
 </template>
 
 <script>
-import Weather from "@/components/weather"
+import Weather from '@/components/weather'
+import Todo from '@/components/todo'
 
 export default {
     name: 'info',
@@ -39,10 +50,10 @@ export default {
     created() {
         this.setPic()
     },
-    computed: {
-    },
+    computed: {},
     components: {
-        Weather
+        Weather,
+        Todo
     }
 }
 </script>

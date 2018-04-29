@@ -6,7 +6,7 @@
 
 - [ ] 使用 vuex
     - [ ] todo 存储在vuex里
-- [ ] bilibili
+- [x] bilibili
     - [x] 搜索
     - [x] 关注
         - [x] 视频
