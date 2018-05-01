@@ -1,26 +1,20 @@
 <template>
     <div>
-        <el-row>
-            <el-switch v-model="showPic"
-                       active-color="#13ce66"
-                       active-text="打开相册"
-                       inactive-text="关闭">
-            </el-switch>
-            <hr>
-            <el-col :span="12">
-                <img v-show="showPic"
-                     :src="picUrl"
-                     height="650">
-            </el-col>
-            <el-col :span="12">
-                <weather></weather>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="12">
-                <todo></todo>
-            </el-col>
-        </el-row>
+        <el-card class="info-card"
+                 shadow="hover">
+            <img :src="picUrl"
+                 width="320">
+            <p>告别爱的夏</p>
+            <p style="text-align:right;"> -- 金莎</p>
+        </el-card>
+        <el-card class="info-card"
+                 shadow="hover">
+            <weather></weather>
+        </el-card>
+        <el-card class="info-card"
+                 shadow="hover">
+            <todo></todo>
+        </el-card>
     </div>
 </template>
 
@@ -33,9 +27,7 @@ export default {
     props: {},
     data() {
         return {
-            picUrl: '',
-            picUrl2: '',
-            showPic: false
+            picUrl: ''
         }
     },
     methods: {
@@ -59,5 +51,18 @@ export default {
 </script>
 
 <style scoped>
-
+    .info-card {
+        float: left;
+        width: 350px;
+        height: 600px;
+        box-sizing: border-box;
+        margin: 10px 10px;
+    }
 </style>
+
+<style>
+    .info-card > .el-card__body {
+        padding: 15px;
+    }
+</style>
+

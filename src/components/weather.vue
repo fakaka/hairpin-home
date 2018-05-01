@@ -62,11 +62,11 @@ export default {
 
 <style scoped>
     .sk {
-      border: 1px solid #d4d4d4;
+      /* border: 1px solid #d4d4d4; */
       float: left;
       height: 296px;
       position: relative;
-      width: 359px;
+      width: 320px;
     }
     .sk .time {
       color: #7e7e7e;
