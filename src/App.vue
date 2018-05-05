@@ -11,6 +11,30 @@
                         <span slot="title">{{ item.name }}</span>
                     </el-menu-item>
                 </el-menu>
+                <div class="user-info">
+                    <div class="info-item">
+                        <el-badge :value="12">
+                            <el-button size="small">消息</el-button>
+                        </el-badge>
+                    </div>
+                    <div class="info-item">
+                        <el-dropdown trigger="click">
+                            <div class="avatar-wrapper">
+                                <img class="user-avatar"
+                                     width="25"
+                                     src="./assets/logo.png">
+                                <i class="el-icon-caret-bottom"></i>
+                            </div>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item>黄金糕</el-dropdown-item>
+                                <el-dropdown-item>狮子头</el-dropdown-item>
+                                <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                                <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                                <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </div>
+                </div>
             </el-header>
 
             <el-main>
@@ -67,6 +91,15 @@ export default {
 
 <style lang="less">
     @import './style/common';
+    .user-info {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+    }
+    .info-item {
+        display: inline-block;
+        margin: 0 8px;
+    }
     .el-main {
         width: 80%;
         margin: 0 auto;
