@@ -32,10 +32,6 @@ export default {
             activeIndex: '',
             menuData: [
                 {
-                    index: '/info',
-                    name: '定制页'
-                },
-                {
                     index: '/',
                     name: '主页'
                 },

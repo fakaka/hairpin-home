@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from '@/pages/home'
-import Info from '@/pages/info'
 import Bilibili from '@/pages/bilibili'
 import Music from '@/pages/music'
 import News from '@/pages/news'
@@ -24,11 +23,6 @@ export default new Router({
             path: '/music',
             name: 'music',
             component: Music
-        },
-        {
-            path: '/info',
-            name: 'info',
-            component: Info
         },
         {
             path: '/bilibili',
