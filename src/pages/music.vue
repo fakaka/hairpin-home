@@ -6,7 +6,8 @@
                          :interval="3000">
                 <el-carousel-item v-for="(item, index) in banners"
                                   :key="index">
-                    <a :href="item.url" target="_balnk">
+                    <a :href="item.url"
+                       target="_balnk">
                         <img :src="item.pic"
                              alt="item"
                              title="img">
@@ -21,7 +22,8 @@
                             @click-row="clickRow"></music-list>
             </el-tab-pane>
             <el-tab-pane label="我喜欢">
-                <music-list :tableData="tableData2"></music-list>
+                <music-list :tableData="tableData2"
+                            @click-row="clickRow"></music-list>
             </el-tab-pane>
             <el-tab-pane label="歌手排行榜">
                 <div>
@@ -46,19 +48,24 @@
                 </div>
             </el-tab-pane>
             <el-tab-pane label="轻音乐">轻音乐
-                <music-list :tableData="tableData4"></music-list>
+                <music-list :tableData="tableData4"
+                            @click-row="clickRow"></music-list>
             </el-tab-pane>
         </el-tabs>
-        <div class="player">
+        <!-- <div class="player">
             <audio controls="controls"
                    :src="musicUrl"></audio>
-        </div>
+        </div> -->
 
+        <aplayer showLrc
+                 style="width:400px"
+                 :music="musicData"></aplayer>
     </div>
 </template>
 
 <script>
 import MusicList from '@/components/music-list'
+import Aplayer from 'vue-aplayer'
 
 const baseUrl = 'http://localhost:3003/music'
 
@@ -69,16 +76,13 @@ export default {
         return {
             banners: [
                 {
-                    pic:
-                        'http://p1.music.126.net/pXK6K_3UQMRCm8M1LdRMBQ==/109951163111294398.jpg'
+                    pic: 'http://p1.music.126.net/pXK6K_3UQMRCm8M1LdRMBQ==/109951163111294398.jpg'
                 },
                 {
-                    pic:
-                        'http://p1.music.126.net/1uWIQxcgunObfR76YLofHg==/109951163111295860.jpg'
+                    pic: 'http://p1.music.126.net/1uWIQxcgunObfR76YLofHg==/109951163111295860.jpg'
                 },
                 {
-                    pic:
-                        'http://p1.music.126.net/56rJnp0_26R2Aj0LufKaRw==/109951163111320482.jpg'
+                    pic: 'http://p1.music.126.net/56rJnp0_26R2Aj0LufKaRw==/109951163111320482.jpg'
                 }
             ],
             tableData: [],
@@ -86,7 +90,13 @@ export default {
             tableData3: [],
             tableData4: [],
             today: new Date().getDate(),
-            musicUrl: ''
+            // musicUrl: '',
+            musicData: {
+                title: '纸短情长',
+                artist: '花粥',
+                src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+                pic: 'http://p1.music.126.net/PXE9MfYCgnjHz1vkrpUywQ==/109951163290871736.jpg'
+            }
         }
     },
     methods: {
@@ -116,23 +126,21 @@ export default {
             })
         },
         _getLikes() {
-            this.$http
-                .get(baseUrl + '/playlist/detail?id=52177186')
-                .then(resp => {
-                    // console.log(resp.body)
-                    if (resp.body.code == 200) {
-                        var array = resp.body.result.tracks
-                        if (array.length < 15) {
-                            return
-                        }
-                        this.tableData2 = []
-                        for (let i = 0; i < 15; i++) {
-                            const element = array[i]
-                            var newData = this.formatData2(element)
-                            this.tableData2.push(newData)
-                        }
+            this.$http.get(baseUrl + '/playlist/detail?id=52177186').then(resp => {
+                // console.log(resp.body)
+                if (resp.body.code == 200) {
+                    var array = resp.body.result.tracks
+                    if (array.length < 15) {
+                        return
                     }
-                })
+                    this.tableData2 = []
+                    for (let i = 0; i < 15; i++) {
+                        const element = array[i]
+                        var newData = this.formatData2(element)
+                        this.tableData2.push(newData)
+                    }
+                }
+            })
         },
         _getPlaylist(id = 112875926) {
             this.$http.get(baseUrl + '/playlist/detail?id=' + id).then(resp => {
@@ -162,9 +170,17 @@ export default {
         clickRow(row) {
             // console.log(row)
             this.$http.get(baseUrl + '/song/url?id=' + row.sid).then(resp => {
-                // console.log(resp.body)
+                console.log(resp.body)
                 if (resp.body.code == 200) {
-                    this.musicUrl = resp.body.data[0].url
+                    // this.musicUrl = resp.body.data[0].url
+
+                    this.musicData = {
+                        title: '纸短情长',
+                        artist: '花粥',
+                        src: resp.body.data[0].url,
+                        pic:
+                            'http://p1.music.126.net/PXE9MfYCgnjHz1vkrpUywQ==/109951163290871736.jpg'
+                    }
                 }
             })
         },
@@ -191,7 +207,7 @@ export default {
         },
         formatData2(data) {
             let res = {}
-            res.sid = data.sid
+            res.sid = data.id
             res.name = data.name
             let singer = ''
             for (let i = 0; i < data.artists.length; i++) {
@@ -220,7 +236,8 @@ export default {
     },
     computed: {},
     components: {
-        MusicList
+        MusicList,
+        Aplayer
     }
 }
 </script>

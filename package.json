@@ -18,7 +18,9 @@
         "vuex": "^3.0.1",
         "highlight.js": "^9.12.0",
         "marked": "^0.3.17",
-        "github-markdown-css": "^2.10.0"
+        "github-markdown-css": "^2.10.0",
+        "vue-aplayer": "^1.5.1",
+        "hls.js": "^0.9.1"
     },
     "devDependencies": {
         "autoprefixer": "^7.1.2",
