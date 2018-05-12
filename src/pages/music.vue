@@ -2,15 +2,14 @@
     <div>
         <div class="block">
             <el-carousel trigger="click"
-                         height="350px"
-                         :interval="3000">
+                         height="336px"
+                         :interval="4000">
                 <el-carousel-item v-for="(item, index) in banners"
+                                  :style="getBackgroudImg(item.backgroundUrl)"
                                   :key="index">
-                    <a :href="item.url"
+                    <a :href="getLink(item.url)"
                        target="_balnk">
-                        <img :src="item.pic"
-                             alt="item"
-                             title="img">
+                        <img :src="item.picUrl">
                     </a>
                 </el-carousel-item>
             </el-carousel>
@@ -76,13 +75,18 @@ export default {
         return {
             banners: [
                 {
-                    pic: 'http://p1.music.126.net/pXK6K_3UQMRCm8M1LdRMBQ==/109951163111294398.jpg'
+                    picUrl:
+                        'http://p1.music.126.net/-DtIvbFj7S9QEIhwvZlKkQ==/109951163291456756.jpg',
+                    backgroundUrl:
+                        'http://p1.music.126.net/NhPafsylE0jM2g90_yewqg==/109951163291458665.jpg'
                 },
                 {
-                    pic: 'http://p1.music.126.net/1uWIQxcgunObfR76YLofHg==/109951163111295860.jpg'
+                    picUrl:
+                        'http://p1.music.126.net/1uWIQxcgunObfR76YLofHg==/109951163111295860.jpg'
                 },
                 {
-                    pic: 'http://p1.music.126.net/56rJnp0_26R2Aj0LufKaRw==/109951163111320482.jpg'
+                    picUrl:
+                        'http://p1.music.126.net/56rJnp0_26R2Aj0LufKaRw==/109951163111320482.jpg'
                 }
             ],
             tableData: [],
@@ -94,12 +98,20 @@ export default {
             musicData: {
                 title: '纸短情长',
                 artist: '花粥',
-                src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+                src:
+                    'http://m10.music.126.net/20180512105434/4fb5508383dbe635e8f7e194208acaf6/ymusic/1b5b/6305/8af2/ed4b0aac959996c4ecbcffe2972909a4.mp3',
                 pic: 'http://p1.music.126.net/PXE9MfYCgnjHz1vkrpUywQ==/109951163290871736.jpg'
             }
         }
     },
     methods: {
+        getBackgroudImg(backgroundUrl) {
+            return `background-image: url('${backgroundUrl}')`
+        },
+        getLink(url) {
+            url = url + ''
+            return url.startsWith('/') ? 'http://music.163.com/#' + url : url
+        },
         _getTops() {
             this.$http.get(baseUrl + '/top?idx=1').then(resp => {
                 // console.log(resp.body)
@@ -244,15 +256,15 @@ export default {
 
 <style scoped>
     .el-carousel__item {
-        background-color: #d3dce6;
+        /* background-color: #d3dce6; */
     }
 
     .el-carousel__item img {
         /* opacity: 0.9; */
-        height: 350px;
-        line-height: 350px;
-        width: 80%;
-        margin: 0 10%;
+        height: 336px;
+        line-height: 336px;
+        width: 65%;
+        margin: 0 17%;
     }
 
     .el-tab-pane {
