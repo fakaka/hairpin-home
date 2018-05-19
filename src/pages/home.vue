@@ -2,30 +2,35 @@
     <div>
         <search-box></search-box>
         <br>
-        <el-card class="info-card"
-                 shadow="hover">
-            <img :src="picUrl"
-                 width="320">
-            <p>告别爱的夏</p>
-            <p style="text-align:right;"> -- 金莎</p>
-        </el-card>
-        <el-card class="info-card"
-                 shadow="hover">
-            <weather></weather>
-        </el-card>
-        <el-card class="info-card"
-                 shadow="hover">
-            <todo></todo>
-        </el-card>
-        <el-card class="info-card"
-                 shadow="hover">
-            <ul>
-                <li v-for="(item, index) in tools"
-                    :key="index">
-                    <a :href="item.url">{{ item.title }}</a>
-                </li>
-            </ul>
-        </el-card>
+        <draggable :options="options"
+                   draggable=".el-card"
+                   @start="drag=true"
+                   @end="drag=false">
+            <el-card class="info-card"
+                     shadow="hover">
+                <img :src="picUrl"
+                     width="320">
+                <p>告别爱的夏</p>
+                <p style="text-align:right;"> -- 金莎</p>
+            </el-card>
+            <el-card class="info-card"
+                     shadow="hover">
+                <weather></weather>
+            </el-card>
+            <el-card class="info-card"
+                     shadow="hover">
+                <todo></todo>
+            </el-card>
+            <el-card class="info-card"
+                     shadow="hover">
+                <ul>
+                    <li v-for="(item, index) in tools"
+                        :key="index">
+                        <a :href="item.url">{{ item.title }}</a>
+                    </li>
+                </ul>
+            </el-card>
+        </draggable>
     </div>
 </template>
 
@@ -33,6 +38,7 @@
 import SearchBox from '@/components/search-box'
 import Weather from '@/components/weather'
 import Todo from '@/components/todo'
+import draggable from 'vuedraggable'
 
 export default {
     name: 'home',
@@ -41,7 +47,12 @@ export default {
         return {
             q: '',
             selectEngine: '',
-            tools: []
+            tools: [],
+            options: {
+                group: 'card',
+                touchStartThreshold: 3,
+                animation: 700
+            }
         }
     },
     methods: {
@@ -71,7 +82,8 @@ export default {
     components: {
         SearchBox,
         Weather,
-        Todo
+        Todo,
+        draggable
     }
 }
 </script>
@@ -83,6 +95,11 @@ export default {
         height: 600px;
         box-sizing: border-box;
         margin: 10px 10px;
+    }
+    .sortable-ghost {
+        opacity: 0.5;
+    }
+    .sortable-chosen {
     }
 </style>
 

@@ -182,7 +182,7 @@ export default {
         clickRow(row) {
             // console.log(row)
             this.$http.get(baseUrl + '/song/url?id=' + row.sid).then(resp => {
-                console.log(resp.body)
+                // console.log(resp.body)
                 if (resp.body.code == 200) {
                     // this.musicUrl = resp.body.data[0].url
 
@@ -255,10 +255,6 @@ export default {
 </script>
 
 <style scoped>
-    .el-carousel__item {
-        /* background-color: #d3dce6; */
-    }
-
     .el-carousel__item img {
         /* opacity: 0.9; */
         height: 336px;

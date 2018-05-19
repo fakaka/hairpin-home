@@ -20,7 +20,8 @@
         "marked": "^0.3.17",
         "github-markdown-css": "^2.10.0",
         "vue-aplayer": "^1.5.1",
-        "hls.js": "^0.9.1"
+        "hls.js": "^0.9.1",
+        "vuedraggable": "^2.16.0"
     },
     "devDependencies": {
         "autoprefixer": "^7.1.2",
