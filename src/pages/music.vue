@@ -14,6 +14,9 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
+        <aplayer showLrc
+                 style="width:500px"
+                 :music="musicData"></aplayer>
         <el-tabs tab-position="left"
                  type="border-card">
             <el-tab-pane label="云音乐热歌榜">
@@ -55,10 +58,8 @@
             <audio controls="controls"
                    :src="musicUrl"></audio>
         </div> -->
+        <br>
 
-        <aplayer showLrc
-                 style="width:400px"
-                 :music="musicData"></aplayer>
     </div>
 </template>
 

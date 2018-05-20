@@ -38,7 +38,7 @@
 import SearchBox from '@/components/search-box'
 import Weather from '@/components/weather'
 import Todo from '@/components/todo'
-import draggable from 'vuedraggable'
+import Draggable from 'vuedraggable'
 
 export default {
     name: 'home',
@@ -83,7 +83,7 @@ export default {
         SearchBox,
         Weather,
         Todo,
-        draggable
+        Draggable
     }
 }
 </script>
@@ -100,6 +100,7 @@ export default {
         opacity: 0.5;
     }
     .sortable-chosen {
+        cursor: move;
     }
 </style>
 
