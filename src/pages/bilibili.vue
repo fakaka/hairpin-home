@@ -141,7 +141,7 @@ export default {
         // for (let uid in likeMap) {
         //     console.log(likeMap[uid])
         // }
-        this._getLikeData('1678535', 3)
+        this._getLikeData('1678535', 0)
     },
     components: {
         BilibiliHeader,
