@@ -5,7 +5,7 @@
         </a>
         <div class="search">
             <form class="searchform" action="https://search.bilibili.com/all?" target="_blank">
-                <input type="text" autocomplete="off" placeholder="asmr" class="search-keyword" name="keyword" value="" />
+                <input type="text" autocomplete="off" placeholder="李艺彤" class="search-keyword" name="keyword" value="李艺彤" />
                 <button type="submit" class="search-submit"></button>
             </form>
             <a href="https://www.bilibili.com/ranking" target="_blank" class="link-ranking">
