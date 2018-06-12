@@ -8,10 +8,16 @@
                    @end="drag=false">
             <el-card class="info-card"
                      shadow="hover">
-                <img :src="picUrl"
-                     width="320">
-                <p>告别爱的夏</p>
-                <p style="text-align:right;"> -- 金莎</p>
+                <div class="daily-sign">
+                    <img :src="picUrl"
+                        width="320">
+                    <div class="info">
+                        <p >告别爱的夏</p>
+                        <p style="text-align:right;"> -- by 金莎</p>
+                        <hr style="border : 1px dashed blue;">
+                        <p> <span>></span> 有何不可 - 许嵩</p>
+                    </div>
+                </div>
             </el-card>
             <el-card class="info-card"
                      shadow="hover">
@@ -90,9 +96,10 @@ export default {
 
 <style scoped>
     .info-card {
-        float: left;
+        position: relative;
         width: 350px;
         height: 600px;
+        float: left;
         box-sizing: border-box;
         margin: 10px 10px;
     }
@@ -101,6 +108,11 @@ export default {
     }
     .sortable-chosen {
         cursor: move;
+    }
+        .info {
+        width: 90%;
+        position: absolute;
+        bottom:10px;
     }
 </style>
 
