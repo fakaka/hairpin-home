@@ -64,7 +64,9 @@ const likeMap = {
     '259333': '矮乐多Aliga'
 }
 
-var baseUrl = 'http://localhost:3003/bilibili'
+var root = process.env.API_ROOT
+console.log(root)
+var baseUrl = root + '/bilibili'
 // var baseUrl = 'http://47.96.166.106:3003/bilibili'
 
 export default {
@@ -79,7 +81,7 @@ export default {
             recommendData: [],
             rankMap: rankMap,
             rankArr: [1, 3, 4, 129, 181],
-            activeName2:'first'
+            activeName2: 'first'
         }
     },
     methods: {
