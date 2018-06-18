@@ -12,7 +12,7 @@ import Test from '@/pages/test'
 Vue.use(Router)
 
 export default new Router({
-    base: '/home/',
+    // base: '/home/',
     mode: 'history',
     routes: [
         {

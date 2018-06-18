@@ -1,6 +1,6 @@
 # hairpin-home
 
->  [个人主页](http://www.hairpin.top/)
+![](https://travis-ci.org/fakaka/hairpin-home.svg?branch=master)
 
 ## TODO
 
