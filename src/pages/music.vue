@@ -14,8 +14,8 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <aplayer showLrc
-                 style="width:500px"
+        <aplayer class="a-player"
+                    :mini="true"
                  :music="musicData"></aplayer>
         <el-tabs tab-position="left"
                  type="border-card">
@@ -58,8 +58,6 @@
             <audio controls="controls"
                    :src="musicUrl"></audio>
         </div> -->
-        <br>
-
     </div>
 </template>
 
@@ -275,5 +273,12 @@ export default {
         padding: 0 0 10px 35px;
         line-height: 1.4;
         font-size: 12px;
+    }
+
+    .a-player{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        margin:2px;
     }
 </style>
