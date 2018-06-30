@@ -5,8 +5,6 @@ import Home from '@/pages/home'
 import Bilibili from '@/pages/bilibili'
 import Music from '@/pages/music'
 import News from '@/pages/news'
-import Blog from '@/pages/blog'
-import BlogArticle from '@/components/blog-article'
 import Test from '@/pages/test'
 
 Vue.use(Router)
@@ -33,17 +31,6 @@ export default new Router({
             path: '/news',
             name: 'news',
             component: News
-        },
-        {
-            path: '/blog',
-            name: 'blog',
-            component: Blog,
-            children: [
-                {
-                    path: ':id',
-                    component: BlogArticle
-                }
-            ]
         },
         {
             path: '/test',

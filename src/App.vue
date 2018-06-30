@@ -72,10 +72,6 @@ export default {
                     name: '新闻'
                 },
                 {
-                    index: '/blog',
-                    name: '博客'
-                },
-                {
                     index: '/test',
                     name: '测试'
                 }

@@ -6,7 +6,7 @@
                    draggable=".el-card"
                    @start="drag=true"
                    @end="drag=false">
-            <el-card class="info-card"
+            <!-- <el-card class="info-card"
                      shadow="hover">
                 <div class="daily-sign">
                     <img :src="picUrl"
@@ -18,7 +18,7 @@
                         <p> <span>></span> 有何不可 - 许嵩</p>
                     </div>
                 </div>
-            </el-card>
+            </el-card> -->
             <el-card class="info-card"
                      shadow="hover">
                 <weather></weather>
