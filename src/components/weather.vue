@@ -1,124 +1,119 @@
 <template>
-    <div>
-        <div class="sk">
-            <p class="time">
-                <span>21:30 实况</span>
-            </p>
-            <div class="zs h">
-                <i></i>
-                <span>相对湿度</span>
-                <em>88%</em>
-            </div>
-            <div class="zs w">
-                <i></i>
-                <span>东北风</span>
-                <em>2级</em>
-            </div>
-            <div class="tem">
-                <span>-1</span>
-                <em>℃</em>
-            </div>
-            <p></p>
-            <div class="therm">
-                <p>
-                    <i class="t"></i>
-                    <i class="c" style="height:39.2px"></i>
-                </p>
-            </div>
-            <div class="zs pol">
-                <i></i>
-                <span>
-                    <a style="color:#44cf12" href="http://www.weather.com.cn/air/?city=101190101" target="_blank">20优</a>
-                </span>
-            </div>
-            <div class="sk_alarm">
-                <a class="orange" href="http://www.weather.com.cn/alarm/newalarmcontent.shtml?file=1011901-20180125210100-1403.html" target="_blank" title="江苏省南京市气象台发布道路结冰橙色预警" style="display: block;">道路结冰预警</a>
-                <a class="orange" href="http://www.weather.com.cn/alarm/newalarmcontent.shtml?file=1011901-20180125114900-0303.html" target="_blank" title="江苏省南京市气象台发布暴雪橙色预警" style="display: none;">暴雪预警</a>
-                <a class="yellow" href="http://www.weather.com.cn/alarm/newalarmcontent.shtml?file=10119-20180125100300-1402.html" target="_blank" title="江苏省气象台发布道路结冰黄色预警" style="display: none;">道路结冰预警</a>
-            </div>
+    <div class="detail">
+        <a class="seven"
+           href="http://tianqi.so.com/weather/101190101"
+           target="_blank">未来七天天气</a>
+        <div class="title">7月7日－
+            <span class="at">南京</span>
+            <a href="javascript:;"
+               class="change">切换</a>
+        </div>
+        <div class="select"
+             style="display: none;">
+            <select class="province"></select>
+            <select class="city"></select>
+            <select class="town"></select>
+            <input type="button"
+                   class="ok"
+                   value="更换"> </div>
+        <div class="curr-day">
+            <a href="/"
+               target="_blank">
+                <img src="https://p.ssl.qhimg.com/dm/60_60_/d/inn/3716a4d4/1-4.png">
+                <div class="curr-day-wrap">
+                    <span class="weather">25~30°C</span>
+                    <span class="feature">雷阵雨</span>
+                    <span class="wind">东风 4-5级</span>
+                </div>
+            </a>
+        </div>
+        <div class="list">
+            <a href="/"
+               target="_blank">
+                <div>明天</div> <img src="https://p.ssl.qhimg.com/d/inn/9371c065/weather/bg-w/1-1.png">
+                <div>多云</div>
+                <div>26~31°C</div>
+            </a>
+            <a href="/"
+               target="_blank">
+                <div>后天</div> <img src="https://p.ssl.qhimg.com/d/inn/9371c065/weather/bg-w/1-1.png">
+                <div>多云</div>
+                <div>27~34°C</div>
+            </a>
+            <a href="/"
+               target="_blank">
+                <div>7月10日</div> <img src="https://p.ssl.qhimg.com/d/inn/9371c065/weather/bg-w/1-1.png">
+                <div>多云</div>
+                <div>26~34°C</div>
+            </a>
         </div>
     </div>
 </template>
 
 <script>
-
 export default {
     name: 'weather',
     props: {},
     data() {
-        return {
-
-        }
+        return {}
     },
-    methods: {
-    },
-    created() { },
+    methods: {},
+    created() {},
     computed: {},
-    components: {
-
-    }
+    components: {}
 }
 </script>
 
 <style scoped>
-    .sk {
-      /* border: 1px solid #d4d4d4; */
-      float: left;
-      height: 296px;
-      position: relative;
-      width: 320px;
+    .seven {
+        color: #999;
+        position: absolute;
+        right: 20px;
     }
-    .sk .time {
-      color: #7e7e7e;
-      font-size: 13px;
-      left: 26px;
-      position: absolute;
-      top: 13px;
+
+    .change {
+        color: #19b955;
+        margin-left: 8px;
     }
-    .sk .h {
-      left: 24px;
-      top: 214px;
+
+    .select {
+        display: none;
+        margin-top: 4px;
+        text-align: center;
     }
-    .sk .zs {
-      position: absolute;
+    .curr-day {
+        padding: 15px 30px;
+        overflow: hidden;
     }
-    .sk .w {
-      left: 200px;
-      top: 213px;
+
+    .curr-day-wrap {
+        float: right;
     }
-    .sk .zs {
-      position: absolute;
+
+    .curr-day-wrap .weather {
+        color: #333;
+        font-size: 20px;
     }
-    .sk .tem {
-      color: #2d76b6;
-      left: 149px;
-      position: absolute;
-      top: 102px;
+    .curr-day-wrap span {
+        color: #999;
+        display: block;
+        font-size: 13px;
+        margin-bottom: 5px;
     }
-    .sk .tem span {
-      font-size: 70px;
+
+    .list {
+        border-top: 1px solid #f2f2f2;
+        clear: both;
+        padding: 15px;
     }
-    .sk .tem em {
-      font-size: 55px;
-      font-style: normal;
+
+    .list a {
+        color: #333;
+        display: inline-block;
+        line-height: 20px;
+        padding: 2px 0 4px;
+        text-align: center;
+        width: 90px;
     }
-    .sk .therm {
-      background-position: 0 0;
-      height: 132px;
-      left: 62px;
-      position: absolute;
-      top: 61px;
-      width: 76px;
-    }
-    .sk .pol {
-      left: 24px;
-      top: 250px;
-      z-index: 10;
-    }
-    .sk .sk_alarm {
-      position: absolute;
-      right: 31px;
-      top: 38px;
-      z-index: 5;
-    }
+
 </style>

@@ -1,13 +1,15 @@
 <template>
     <div class="search-box"
          ref="searchBox">
-        <el-input placeholder="请输入关键字"
-                  @keyup.enter.native="search"
-                  v-model.trim="q"
-                  class="input-with-select"
-                  :clearable="true"
-                  :autofocus="true"
-                  tabindex="1">
+        <el-autocomplete placeholder="请输入关键字"
+                         @keyup.enter.native="search"
+                         v-model.trim="q"
+                         class="input-with-select"
+                         :fetch-suggestions="querySearchAsync"
+                         :clearable="true"
+                         :autofocus="true"
+                         @select="search"
+                         tabindex="1">
             <el-select v-model="selectEngine"
                        slot="prepend"
                        placeholder="百度"
@@ -23,7 +25,7 @@
             <el-button slot="append"
                        icon="el-icon-search"
                        @click="search"></el-button>
-        </el-input>
+        </el-autocomplete>
     </div>
 </template>
 
@@ -71,6 +73,26 @@ export default {
                     this.$message.error('不支持的搜索引擎!!!')
                     break
             }
+        },
+        querySearchAsync(queryString, cb) {
+            let word = queryString
+            if (word == '') {
+                cb([])
+            }
+            let engine = 'baidu'
+            if (this.selectEngine == 2) {
+                engine = '360'
+            }
+
+            this.$http.get(`http://localhost:3003/search/${engine}?word=${word}`).then(resp => {
+                // console.log(resp.body)
+                let arr = resp.body
+                let res = []
+                for (let i = 0; i < arr.length; i++) {
+                    res.push({ value: arr[i] })
+                }
+                cb(res)
+            })
         }
     },
     created() {},
@@ -84,6 +106,9 @@ export default {
 
 <style scoped>
     .search-box {
-        margin: 0 auto;
+        margin: 10px auto;
+    }
+    .el-autocomplete {
+        width: 100%;
     }
 </style>
