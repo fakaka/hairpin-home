@@ -9,20 +9,24 @@
                 <bilibili-recommend :recommendData="recommendData"></bilibili-recommend>
             </div>
             <div class="like">
-                <div class="like" v-if="likeData">
-                    <h3>关注</h3>
-                    <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
+                <h3>关注</h3>
+                <!-- <el-tabs v-model="activeName2" type="border-card">
                         <el-tab-pane label="いとう哀" name="first">
                             <bilibili-like :likeData="likeData"></bilibili-like>
                         </el-tab-pane>
                         <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
                         <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
                         <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
-                    </el-tabs>
-                </div>
+                </el-tabs> -->
+                <el-tabs >
+                    <el-tab-pane v-for="(value, key) in likeMap" :key="key" :label="value">
+                        <bilibili-like :url="getUrl(key)"></bilibili-like>
+                    </el-tab-pane>
+                </el-tabs>
             </div>
+            <br>
         </div>
-        <div class="rank" v-if="rankDatas.length == 5">
+        <div class="rank" v-if="rankDatas.length == 5" style="float: right;">
             <h3>排行</h3>
             <el-tabs tab-position="left" style="height: 730px;">
                 <el-tab-pane v-for="(rankData, index) in rankDatas" :key="index" :label="rankMap[rankArr[index]]">
@@ -81,7 +85,8 @@ export default {
             recommendData: [],
             rankMap: rankMap,
             rankArr: [1, 3, 4, 129, 181],
-            activeName2: 'first'
+            activeName2: 'first',
+            likeMap: likeMap
         }
     },
     methods: {
@@ -119,7 +124,7 @@ export default {
          */
         _getLikeData(uid = '927587', idx = 0) {
             this.$http.get(baseUrl + '/user/space?uid=' + uid).then(resp => {
-                // console.log(resp.body)
+                console.log(resp.body)
                 if (resp.body.code == 0) {
                     var card = resp.body.data.cards[idx].card
                     var cardData = JSON.parse(card)
@@ -128,21 +133,35 @@ export default {
                     this.likeData = cardData
                 }
             })
+        },
+        getUrl(uid) {
+            return baseUrl + '/user/space?uid=' + uid
         }
     },
     computed: {},
     mounted() {
         this._getBanner()
+
+        this._getRecommendData()
+        // for (let uid in likeMap) {
+        //     console.log(likeMap[uid])
+        // }
+
+        for (const key in likeMap) {
+            if (likeMap.hasOwnProperty(key)) {
+                const element = likeMap[key]
+                console.log(key)
+                console.log(likeMap[key])
+            }
+        }
+        this._getLikeData('1678535', 0)
+    },
+    created() {
         this.rankDatas = []
         for (let i = 0; i < this.rankArr.length; i++) {
             const rid = this.rankArr[i]
             this._getRankData(i, rid)
         }
-        this._getRecommendData()
-        // for (let uid in likeMap) {
-        //     console.log(likeMap[uid])
-        // }
-        this._getLikeData('1678535', 0)
     },
     components: {
         BilibiliHeader,

@@ -5,7 +5,7 @@
                    draggable=".el-card"
                    @start="drag=true"
                    @end="drag=false">
-            <like-card :two="true">
+            <like-card :two="true" v-if="pic">
                 <div class="daily-sign">
                     <img :src="picUrl"
                          width="320">
@@ -47,7 +47,8 @@ export default {
                 group: 'card',
                 touchStartThreshold: 3,
                 animation: 700
-            }
+            },
+            pic: false
         }
     },
     methods: {
@@ -63,6 +64,13 @@ export default {
         this.setPic()
     },
     mounted() {
+     let showPic  = localStorage.getItem('showPic')
+        if(showPic == 'true'){
+            this.pic = true
+        }
+    },
+    updated(){
+   
     },
     computed: {},
     components: {

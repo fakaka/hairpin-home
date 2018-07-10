@@ -38,7 +38,7 @@ export default {
 <style scoped>
     .recommend-module {
       position: relative;
-      width: 750px;
+      width: 720px;
       height: 100%;
       overflow: hidden;
     }

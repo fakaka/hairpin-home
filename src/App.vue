@@ -2,7 +2,7 @@
     <div id="app">
         <el-container>
             <el-header>
-                <el-menu :default-active="activeIndex"
+                <el-menu :default-active="$route.path"
                          mode="horizontal"
                          router>
                     <el-menu-item v-for="(item, index) in menuData"
@@ -80,7 +80,7 @@ export default {
     },
     methods: {},
     mounted() {
-        this.activeIndex = '/' + (this.$route.name || '')
+        // this.activeIndex = '/' + (this.$route.name || '')
     }
 }
 </script>

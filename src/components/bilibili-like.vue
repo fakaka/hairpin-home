@@ -20,6 +20,8 @@ import bilibiliLikeVideo from './bilibili-like/video'
 import bilibiliLikeVcVideo from './bilibili-like/vc-video'
 import bilibiliLikeRepost from './bilibili-like/repost'
 
+var baseUrl = 'http://localhost:3003/bilibili'
+
 /**
  * desc.type
  * 1 = 转发
@@ -35,6 +37,9 @@ export default {
     props: {
         likeData: {
             type: Object
+        },
+        url:{
+
         }
     },
     data() {
@@ -48,7 +53,19 @@ export default {
             return res
         }
     },
-    created() {},
+    created() {
+        let idx = 0
+        this.$http.get(this.url).then(resp => {
+            console.log(resp.body)
+            if (resp.body.code == 0) {
+                var card = resp.body.data.cards[idx].card
+                var cardData = JSON.parse(card)
+                cardData.type = resp.body.data.cards[idx].desc
+                // console.log(cardData)
+                this.likeData = cardData
+            }
+        })
+    },
     computed: {
         dynamic_id() {
             if (this.likeData && this.likeData.desc) {
