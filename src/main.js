@@ -1,6 +1,9 @@
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
 import router from './router'
+import store from './store'
+import './registerServiceWorker'
+
 // import store from './store'
 import VueResource from 'vue-resource'
 
@@ -15,10 +18,10 @@ Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.use(ElementUI)
 
+Vue.config.productionTip = false
+
 new Vue({
-    el: '#app',
     router,
-    // store,
-    template: '<App/>',
-    components: { App }
-})
+    store,
+    render: h => h(App)
+}).$mount('#app')

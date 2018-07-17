@@ -13,7 +13,7 @@
             <div class="card-content">
                 <div class="text description">{{ videoData.item.description }}</div>
                 <div class="vc-video">
-                    <video :src="videoData.item.video_playurl" controls="controls" height="400"></video>
+                    <video :src="videoData.item.video_playurl" controls="controls" width="400"></video>
                 </div>
             </div>
         </div>
