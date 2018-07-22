@@ -37,7 +37,7 @@
                 </div>
             </el-header>
 
-            <el-main>
+            <el-main id="main">
                 <keep-alive>
                     <router-view></router-view>
                 </keep-alive>
@@ -96,9 +96,10 @@ export default {
         display: inline-block;
         margin: 0 8px;
     }
-    .el-main {
+    #main {
         width: 80%;
         margin: 0 auto;
+        padding-top: 0;
         padding-top: 10px;
     }
 </style>

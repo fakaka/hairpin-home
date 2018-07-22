@@ -1,10 +1,12 @@
 <template>
     <div class="bilibili">
-        <div class="banner" style="margin-left: -50%;height:180px;margin-bottom:10px">
+        <div class="banner"
+             style="margin-left: -50%;height:180px;margin-bottom:10px">
             <bilibili-header :bannerImg="bannerImg"></bilibili-header>
         </div>
         <div class="left">
-            <div class="recommend" v-if="recommendData.length">
+            <div class="recommend"
+                 v-if="recommendData.length">
                 <h3>推荐</h3>
                 <bilibili-recommend :recommendData="recommendData"></bilibili-recommend>
             </div>
@@ -18,19 +20,27 @@
                         <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
                         <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
                 </el-tabs> -->
-                <el-tabs >
-                    <el-tab-pane v-for="(value, key) in likeMap" :key="key" :label="value">
+                <el-tabs>
+                    <el-tab-pane v-for="(value, key) in likeMap"
+                                 :key="key"
+                                 :label="value">
                         <bilibili-like :url="getUrl(key)"></bilibili-like>
                     </el-tab-pane>
                 </el-tabs>
             </div>
             <br>
         </div>
-        <div class="rank" v-if="rankDatas.length == 5" style="float: right;">
+        <div class="rank"
+             v-if="rankDatas.length == 5"
+             style="float: right;">
             <h3>排行</h3>
-            <el-tabs tab-position="left" style="height: 730px;">
-                <el-tab-pane v-for="(rankData, index) in rankDatas" :key="index" :label="rankMap[rankArr[index]]">
-                    <bilibili-rank :label="rankMap[rankArr[index]]" :rankData="rankData"></bilibili-rank>
+            <el-tabs tab-position="left"
+                     style="height: 730px;">
+                <el-tab-pane v-for="(rankData, index) in rankDatas"
+                             :key="index"
+                             :label="rankMap[rankArr[index]]">
+                    <bilibili-rank :label="rankMap[rankArr[index]]"
+                                   :rankData="rankData"></bilibili-rank>
                 </el-tab-pane>
             </el-tabs>
         </div>
