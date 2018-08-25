@@ -2,6 +2,8 @@
 
 ![](https://travis-ci.org/fakaka/hairpin-home.svg?branch=master)
 
+## **整合到 hairpin-tool 里**
+
 ## TODO
 
 - [ ] 使用 vuex
@@ -31,4 +33,4 @@
     - [ ] 多环境打包
     - [ ] 增加 svg 组件
     - [ ] 增加 vuex
-- [ ] 升级到 vue-cli 3.0
+- [x] 升级到 vue-cli 3.0

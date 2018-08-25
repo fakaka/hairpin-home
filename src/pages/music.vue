@@ -105,7 +105,8 @@ export default {
     },
     methods: {
         getBackgroudImg(backgroundUrl) {
-            return `background-image: url('${backgroundUrl}')`
+            // return `background-image: url('${backgroundUrl}')`
+            return ''
         },
         getLink(url) {
             url = url + ''
