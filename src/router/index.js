@@ -6,6 +6,7 @@ import Bilibili from '@/pages/bilibili'
 import Music from '@/pages/music'
 import News from '@/pages/news'
 import Test from '@/pages/test'
+import Share from '@/pages/share'
 
 Vue.use(Router)
 
@@ -28,14 +29,14 @@ export default new Router({
             component: Bilibili
         },
         {
-            path: '/news',
-            name: 'news',
-            component: News
-        },
-        {
             path: '/test',
             name: 'test',
             component: Test
+        },
+        {
+            path: '/share',
+            name: 'share',
+            component: Share
         }
     ]
 })

@@ -5,7 +5,7 @@ import store from './store'
 import './registerServiceWorker'
 
 // import store from './store'
-import VueResource from 'vue-resource'
+// import VueResource from 'vue-resource'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -15,7 +15,7 @@ import './api/api'
 
 Vue.config.productionTip = false
 
-Vue.use(VueResource)
+// Vue.use(VueResource)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

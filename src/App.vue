@@ -74,6 +74,10 @@ export default {
                 {
                     index: '/test',
                     name: '测试'
+                },
+                {
+                    index: '/share',
+                    name: '分享'
                 }
             ]
         }
@@ -85,8 +89,8 @@ export default {
 }
 </script>
 
-<style lang="less">
-    @import './style/common';
+<style lang="scss">
+    // @import './style/common';
     .user-info {
         position: absolute;
         top: 15px;
