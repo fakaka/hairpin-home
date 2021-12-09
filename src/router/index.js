@@ -11,8 +11,9 @@ import Share from '@/pages/share.vue'
 Vue.use(Router)
 
 export default new Router({
-    base: '/hairpin-home/',
-    mode: 'history',
+    base: import.meta.env.BASE_URL,
+    // mode: 'history',
+    mode: 'hash',
     routes: [
         {
             path: '/',

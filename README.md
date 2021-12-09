@@ -2,27 +2,10 @@
 
 ![](https://travis-ci.org/fakaka/hairpin-home.svg?branch=master)
 
-## **整合到 hairpin-tool 里**
-
 ## TODO
 
 - [ ] 使用 vuex
     - [ ] todo 存储在vuex里
-- [x] bilibili
-    - [x] 搜索
-    - [x] 关注
-        - [x] 视频
-        - [x] 文字
-        - [x] 图片
-        - [x] 转发
-            - [x] 视频
-            - [x] 文字
-            - [x] 图片
-    - [x] 大图
-    - [x] 排行榜悬浮信息
-- [x] 音乐
-    - [x] 轮播图
-    - [x] 简单播放功能
 - [ ] 消息框
     - [ ] 显示消息
     - [ ] 消费消息
@@ -32,5 +15,3 @@
     - [ ] api 接口的提取
     - [ ] 多环境打包
     - [ ] 增加 svg 组件
-    - [ ] 增加 vuex
-- [x] 升级到 vue-cli 3.0
