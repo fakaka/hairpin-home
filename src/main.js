@@ -10,12 +10,11 @@ import './registerServiceWorker'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
-import './utils/notify'
-import './api/api'
+// import './utils/notify'
+// import './api/api'
 
 Vue.config.productionTip = false
 
-// Vue.use(VueResource)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

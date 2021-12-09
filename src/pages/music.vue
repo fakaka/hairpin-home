@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import tagSelect from '../components/tag-select'
+import tagSelect from '../components/tag-select.vue'
 
 export default {
     name: 'music',

@@ -49,10 +49,10 @@
 </template>
 
 <script>
-import BilibiliHeader from '@/components/bilibili-header'
-import BilibiliRecommend from '@/components/bilibili-recommend'
-import BilibiliRank from '@/components/bilibili-rank'
-import BilibiliLike from '@/components/bilibili-like'
+import BilibiliHeader from '@/components/bilibili-header.vue'
+import BilibiliRecommend from '@/components/bilibili-recommend.vue'
+import BilibiliRank from '@/components/bilibili-rank.vue'
+import BilibiliLike from '@/components/bilibili-like.vue'
 
 const rankMap = {
     '1': '动画',
@@ -78,8 +78,8 @@ const likeMap = {
     '259333': '矮乐多Aliga'
 }
 
-var root = process.env.API_ROOT
-console.log(root)
+// var root = process.env.API_ROOT
+// console.log(root)
 // var baseUrl = root + '/bilibili'
 var baseUrl = 'http://localhost:3003/bilibili'
 

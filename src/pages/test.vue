@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Todo from '@/components/todo'
+import Todo from '@/components/todo.vue'
 
 export default {
     name: 'test',

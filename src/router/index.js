@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/pages/home'
-import Bilibili from '@/pages/bilibili'
-import Music from '@/pages/music'
-import News from '@/pages/news'
-import Test from '@/pages/test'
-import Share from '@/pages/share'
+import Home from '@/pages/home.vue'
+import Bilibili from '@/pages/bilibili.vue'
+import Music from '@/pages/music.vue'
+import News from '@/pages/news.vue'
+import Test from '@/pages/test.vue'
+import Share from '@/pages/share.vue'
 
 Vue.use(Router)
 

@@ -29,10 +29,10 @@
 </template>
 
 <script>
-import LikeCard from '@/components/like-card'
-import SearchBox from '@/components/search-box'
-import Weather from '@/components/weather'
-import Todo from '@/components/todo'
+import LikeCard from '@/components/like-card.vue'
+import SearchBox from '@/components/search-box.vue'
+import Weather from '@/components/weather.vue'
+import Todo from '@/components/todo.vue'
 import Draggable from 'vuedraggable'
 
 export default {

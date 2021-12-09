@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import bilibiliLikeImage from './bilibili-like/image'
-import bilibiliLikeText from './bilibili-like/text'
-import bilibiliLikeVideo from './bilibili-like/video'
-import bilibiliLikeVcVideo from './bilibili-like/vc-video'
-import bilibiliLikeRepost from './bilibili-like/repost'
+import bilibiliLikeImage from './bilibili-like/image.vue'
+import bilibiliLikeText from './bilibili-like/text.vue'
+import bilibiliLikeVideo from './bilibili-like/video.vue'
+import bilibiliLikeVcVideo from './bilibili-like/vc-video.vue'
+import bilibiliLikeRepost from './bilibili-like/repost.vue'
 
 var baseUrl = 'http://localhost:3003/bilibili'
 
